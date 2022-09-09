@@ -9,6 +9,11 @@ public class powerBoostMachine : MonoBehaviour
     public GameObject playerCombatCam;
     public GameObject boosterCam;
     public GameObject triggerBox;
+    [Header("Booster Items")]
+    public Transform itemSpawnPoint;
+    public GameObject healthBooster;
+    public GameObject attackSpeedBooster;
+    GameObject spawnThisItem;
     [Header("Ganti Texture ini")]
     Texture m_MainTexture;
     public Texture defaultTexture;
@@ -16,6 +21,7 @@ public class powerBoostMachine : MonoBehaviour
     public Texture B;
     public Texture C;
     int randomNumber;
+    int itemRandom;
     bool choice = false;
     KeyCode jawab;
     
@@ -27,6 +33,7 @@ public class powerBoostMachine : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         changeTexture();
+        randomBoosterItem();
         triggerBox.GetComponent<BoxCollider>().enabled = false;
         boosterCam.SetActive(true);
         playerCombatCam.SetActive(false);
@@ -47,6 +54,7 @@ public class powerBoostMachine : MonoBehaviour
             {
                 
                 Debug.Log("jawaban benar");
+                Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
                 cancelBooster();
                 choice = false;
             }
@@ -54,6 +62,7 @@ public class powerBoostMachine : MonoBehaviour
             if(Input.GetKey(KeyCode.Escape))
             {
                 Debug.Log("keluar dari booster");
+                Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
                 choice = false;
                 cancelBooster();
             }          
@@ -103,5 +112,22 @@ public class powerBoostMachine : MonoBehaviour
         }
         //Set the Texture you assign in the Inspector as the main texture (Or Albedo)
         m_Renderer.material.SetTexture("_MainTex", m_MainTexture);
+    }
+
+    private void randomBoosterItem()
+    {
+        itemRandom = Random.Range(1, 3);
+        switch(itemRandom)
+        {
+            case 1:
+                spawnThisItem = healthBooster;
+                break;
+            case 2:
+                spawnThisItem = attackSpeedBooster;
+                break;
+            default:
+                Debug.Log("Jangan diprint");
+                break;
+        }
     }
 }

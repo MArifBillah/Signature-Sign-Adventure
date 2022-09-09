@@ -64,6 +64,11 @@ public class enemy : MonoBehaviour
             // anim.SetBool("enemyRunning",true);
         }
 
+        if(health<100)
+        {
+            ChasePlayer();
+        }
+
         enemyHealth.value = health;
     }
 

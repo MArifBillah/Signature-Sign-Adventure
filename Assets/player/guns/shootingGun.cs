@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class shootingGun : MonoBehaviour
@@ -15,6 +16,9 @@ public class shootingGun : MonoBehaviour
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
+    public Slider shootDelaySlider;
+    float delayValue=0;
+    float delayTime;
 
     //bools
     bool shooting, readyToShoot, reloading;
@@ -36,13 +40,24 @@ public class shootingGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        shootDelaySlider.maxValue = timeBetweenShooting;
+        delayTime = timeBetweenShooting/(timeBetweenShooting/0.02f);
     }
 
     // Update is called once per frame
     void Update()
     {
-       MyInput();
+        MyInput();
+
+    }
+
+    void FixedUpdate()
+    {
+        if(delayValue<=timeBetweenShooting)
+        {
+            delayValue+=delayTime;
+            shootDelaySlider.value =delayValue;
+        }
     }
 
     private void MyInput()
@@ -56,6 +71,8 @@ public class shootingGun : MonoBehaviour
     {
         //set bullets shots to 0
         bulletsShot = 0;
+        delayValue=0;
+        shootDelaySlider.value = delayValue;
         Shoot();
     }
 
