@@ -12,8 +12,8 @@ public class shootingGun : MonoBehaviour
     public float shootForce, upwardForce;
 
     //gun stats
-    public float timeBetweenShooting, spread, timeBetweenshots;
-    public int magazineSize, bulletsPerTap;
+    public float timeBetweenShooting, spread;
+    public int magazineSize;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
     public Slider shootDelaySlider;
@@ -132,6 +132,13 @@ public class shootingGun : MonoBehaviour
     {
         readyToShoot = true;
         allowInvoke = true;
+    }
+
+    public void attackSpeedUpgrade(float subsDelay)
+    {
+        timeBetweenShooting -= subsDelay;
+        shootDelaySlider.maxValue = timeBetweenShooting;
+        delayTime = timeBetweenShooting/(timeBetweenShooting/0.02f);
     }
 
 }

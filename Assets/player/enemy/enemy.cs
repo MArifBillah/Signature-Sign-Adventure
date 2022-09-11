@@ -107,7 +107,13 @@ public class enemy : MonoBehaviour
     private void ChasePlayer()
     {
         transform.LookAt(player);
-        agent.SetDestination(player.position);
+        if(!playerInAttackRange)
+        {
+            agent.SetDestination(player.position);
+        }else{
+            Patrolling();
+        }
+
     }
 
     private void AttackPlayer()

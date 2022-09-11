@@ -25,6 +25,7 @@ public class TPmove : MonoBehaviour
 
     private void Start()
     {
+        SwitchCamera(CameraStyle.free);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
