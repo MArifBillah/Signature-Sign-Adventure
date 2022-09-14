@@ -149,6 +149,7 @@ public class enemy : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        GameObject.Find("Player").GetComponent<playerScore>().enemyCount(1);
         Destroy(gameObject);
     }
 

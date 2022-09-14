@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class playerHealth : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class playerHealth : MonoBehaviour
     public float playerHP;
     public Slider playerHealthSlider;
     public float playerMaxHP;
+    public TextMeshProUGUI healthText;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,8 @@ public class playerHealth : MonoBehaviour
     void Update()
     {
         
-        playerHealthSlider.value = playerHP;    
+        playerHealthSlider.value = playerHP;
+        healthText.text = playerHP.ToString();    
     }
 
     public void PlayerDamage(int damage){

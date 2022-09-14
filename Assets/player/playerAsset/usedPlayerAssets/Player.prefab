@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2066037816619148355}
   - component: {fileID: 2066037816619148380}
   - component: {fileID: 2066037816619148382}
-  - component: {fileID: 2066037816619148376}
+  - component: {fileID: 1106138999686661057}
   - component: {fileID: 2066037816619148383}
   m_Layer: 11
   m_Name: Player
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_Bits: 1024
   orientation: {fileID: 2066037816671746111}
   anim: {fileID: 0}
---- !u!114 &2066037816619148376
+--- !u!114 &1106138999686661057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,11 +253,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2066037816619148354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 554ab2283a45d7845af95f925250ffc9, type: 3}
+  m_Script: {fileID: 11500000, guid: d3568384a36a27548b74cc60167e10c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  orientation: {fileID: 2066037816619148355}
+  enemyDestroyed: {fileID: 0}
+  enemyDestroyedCount: 0
 --- !u!95 &2066037816619148383
 Animator:
   serializedVersion: 4
@@ -925,6 +925,7 @@ MonoBehaviour:
   playerHP: 100
   playerHealthSlider: {fileID: 2066037816074504836}
   playerMaxHP: 100
+  healthText: {fileID: 0}
 --- !u!136 &2066037817526938158
 CapsuleCollider:
   m_ObjectHideFlags: 0
