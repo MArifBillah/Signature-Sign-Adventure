@@ -12,6 +12,7 @@ public class playerHealth : MonoBehaviour
     public Slider playerHealthSlider;
     public float playerMaxHP;
     public TextMeshProUGUI healthText;
+    public GameObject endPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,11 @@ public class playerHealth : MonoBehaviour
     {
         
         playerHealthSlider.value = playerHP;
-        healthText.text = playerHP.ToString();    
+        healthText.text = playerHP.ToString();
+        if(playerHP<=0)
+        {
+            playerLose();
+        }    
     }
 
     public void PlayerDamage(int damage){
@@ -47,5 +52,10 @@ public class playerHealth : MonoBehaviour
                 playerHP = playerHP - (playerHP-playerMaxHP);
             }
         }
+    }
+
+    public void playerLose()
+    {
+        endPanel.GetComponent<menuController>().loseGame();
     }
 }

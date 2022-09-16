@@ -362,6 +362,7 @@
 "Assets/player/enemy/enemy.cs"
 "Assets/player/enemy/enemy2.cs"
 "Assets/player/enemy/lookAtPlayer.cs"
+"Assets/player/goalObject/goalScript.cs"
 "Assets/player/guns/damageHit.cs"
 "Assets/player/guns/shootingGun.cs"
 "Assets/player/itemScript/attackSpeedBoosterScript.cs"
