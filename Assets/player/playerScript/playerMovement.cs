@@ -56,11 +56,15 @@ public class playerMovement : MonoBehaviour
         speedControl();
 
         if(grounded)
+        {
             rb.drag = groundDrag;
+            anim.SetBool("isJumping", false);
+        }
         else
+        {
             rb.drag = 0;
-
-
+            anim.SetBool("isJumping", true);
+        }
     }
 
 
