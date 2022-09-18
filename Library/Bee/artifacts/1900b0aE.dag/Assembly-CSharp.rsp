@@ -368,6 +368,7 @@
 "Assets/player/itemScript/attackSpeedBoosterScript.cs"
 "Assets/player/itemScript/healiingItemScript.cs"
 "Assets/player/itemScript/healthBoosterScript.cs"
+"Assets/player/itemScript/spin.cs"
 "Assets/player/playerScript/animation.cs"
 "Assets/player/playerScript/playerHealth.cs"
 "Assets/player/playerScript/playerMovement.cs"
