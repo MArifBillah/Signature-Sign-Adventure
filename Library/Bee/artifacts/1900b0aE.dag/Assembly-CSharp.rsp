@@ -418,6 +418,7 @@
 "Assets/player/itemScript/healiingItemScript.cs"
 "Assets/player/itemScript/healthBoosterScript.cs"
 "Assets/player/itemScript/spin.cs"
+"Assets/player/movingPlatform 1/movingPlatform.cs"
 "Assets/player/playerScript/animation.cs"
 "Assets/player/playerScript/playerHealth.cs"
 "Assets/player/playerScript/playerMovement.cs"
