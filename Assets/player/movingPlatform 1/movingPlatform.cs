@@ -5,12 +5,23 @@ using UnityEngine;
 public class movingPlatform : MonoBehaviour
 {
     public GameObject Player;
+    private bool isOnPlatform = false;
+
+    void Update()
+    {
+        if(Input.GetKey("space") && isOnPlatform)
+        {
+            Player.transform.parent = null;
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             Player.transform.parent = transform;
+            Player.GetComponent<playerMovement>().moveSpeed = 14;
+            isOnPlatform = true;
         }
     }
 
@@ -18,6 +29,7 @@ public class movingPlatform : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Player.GetComponent<playerMovement>().moveSpeed = 7;
             Player.transform.parent = null;
         }        
     }

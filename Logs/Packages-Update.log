@@ -52,3 +52,12 @@ Update Mode: updateDependencies
 
 The following packages were updated:
   com.unity.collab-proxy from version 1.17.1 to 1.17.2
+
+=== Thu Sep 22 04:47:09 2022
+
+Packages were changed.
+Update Mode: resetToDefaultDependencies
+
+The following packages were removed:
+  com.unity.cinemachine@2.8.9
+  com.unity.feature.development@1.0.1
