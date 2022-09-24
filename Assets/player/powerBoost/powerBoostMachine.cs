@@ -76,15 +76,13 @@ public class powerBoostMachine : MonoBehaviour
                 {
                     if(Input.GetKey(KeyCode.Escape))
                     {
-                        Debug.Log("keluar dari booster");
-                        //this will spawn the randomized booster item, see the randomItem function
-                        Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
                         choice = false;
                         cancelBooster();
                     }
                     else if(Input.GetKey(answer))
                     {
                         Debug.Log("jawaban benar");
+                        //this will spawn the randomized booster item, see the randomItem function
                         Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
                         cancelBooster();
                         choice = false;
