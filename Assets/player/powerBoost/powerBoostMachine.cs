@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class powerBoostMachine : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class powerBoostMachine : MonoBehaviour
     public GameObject boosterCam;
     public GameObject triggerBox;
     public Slider boosterSlider;
+    public TextMeshProUGUI howManyChanceAreLeft;
+    public Transform teleport;
     float BoosterProcessTime;
     public int chance;
     public float maxProcessTime;
@@ -28,7 +31,7 @@ public class powerBoostMachine : MonoBehaviour
     public Texture C;
     int randomNumber;
     int itemRandom;
-    bool choice = false;
+    public bool choice = false;
     KeyCode answer;
     bool answerTime = false;
     bool startSlider = false;
@@ -36,10 +39,12 @@ public class powerBoostMachine : MonoBehaviour
     Renderer m_Renderer;
 
     public GameObject changeThisTexture;
-    
-    // private Animator anim;
+    public static bool isInMinigame = false;
+
+
     void OnTriggerEnter(Collider other)
     {
+        isInMinigame = true;
         boosterSlider.maxValue = maxProcessTime;
         boosterSlider.value = 0f;
         BoosterProcessTime = 0f;
@@ -47,7 +52,7 @@ public class powerBoostMachine : MonoBehaviour
         {
             changeTexture();
             randomBoosterItem();
-            triggerBox.GetComponent<BoxCollider>().enabled = false;
+            
             boosterCam.SetActive(true);
             playerCombatCam.SetActive(false);
             playerFreeCam.SetActive(false);
@@ -62,8 +67,9 @@ public class powerBoostMachine : MonoBehaviour
 
     private void Update()
     {
-        if(choice)
-        {
+        howManyChanceAreLeft.text =chance.ToString();
+        if(choice && chance>0)
+        {     
             StartCoroutine(waitCoroutine());
             //using 'anykey' because the bottom 'else' will consume everything including no input and immediately close the booster as soon as player touch it
             if(Input.anyKey)
@@ -74,16 +80,18 @@ public class powerBoostMachine : MonoBehaviour
                 //this will only take answer after the coroutine return the true value for answerTime var
                 if(answerTime)
                 {
-                    if(Input.GetKey(KeyCode.Escape))
+                    if(Input.GetKey(KeyCode.Space)) 
                     {
                         choice = false;
                         cancelBooster();
+                        player.transform.position = teleport.position;
                     }
                     else if(Input.GetKey(answer))
                     {
                         Debug.Log("jawaban benar");
                         //this will spawn the randomized booster item, see the randomItem function
                         Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
+                        triggerBox.GetComponent<BoxCollider>().enabled = false;
                         cancelBooster();
                         choice = false;
                     }
@@ -103,6 +111,11 @@ public class powerBoostMachine : MonoBehaviour
                 }
             }   
         }
+        else if(chance <1)
+        {
+            Debug.Log("Chance Habis");
+            cancelBooster();
+        }
 
     }
 
@@ -121,14 +134,15 @@ public class powerBoostMachine : MonoBehaviour
     IEnumerator waitCoroutine()
     {
         startSlider = true;
-        print("wait start");
+        // print("wait start");
         yield return new WaitForSecondsRealtime(maxProcessTime);
-        print("wait over");
+        // print("wait over");
         answerTime = true;
     }
 
     public void cancelBooster()
     {
+        isInMinigame = false;
         changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);
         playerFreeCam.SetActive(true);
         boosterCam.SetActive(false);
