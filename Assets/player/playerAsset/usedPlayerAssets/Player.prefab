@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2066037816619148355}
   - component: {fileID: 2066037816619148380}
+  - component: {fileID: 5765806622929170046}
   - component: {fileID: 2066037816619148382}
   - component: {fileID: 1106138999686661057}
   - component: {fileID: 2066037816619148383}
@@ -220,6 +221,26 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5765806622929170046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066037816619148354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cff63d255a3444439c97db59268a273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerObj: {fileID: 0}
+  gun: {fileID: 0}
+  playerHP: 0
+  playerMaxHP: 0
+  enemyDestroyedCount: 0
+  coinCollected: 0
+  timeBetweenShooting: 0
 --- !u!114 &2066037816619148382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDestroyed: {fileID: 0}
+  coinCollection: {fileID: 0}
   enemyDestroyedCount: 0
+  coinCollected: 0
 --- !u!95 &2066037816619148383
 Animator:
   serializedVersion: 4
@@ -926,6 +949,7 @@ MonoBehaviour:
   playerHealthSlider: {fileID: 2066037816074504836}
   playerMaxHP: 100
   healthText: {fileID: 0}
+  endPanel: {fileID: 0}
 --- !u!136 &2066037817526938158
 CapsuleCollider:
   m_ObjectHideFlags: 0
