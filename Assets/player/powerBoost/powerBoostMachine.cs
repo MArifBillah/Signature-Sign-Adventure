@@ -18,11 +18,13 @@ public class powerBoostMachine : MonoBehaviour
     float BoosterProcessTime;
     public int chance;
     public float maxProcessTime;
+
     [Header("Booster Items")]
     public Transform itemSpawnPoint;
     public GameObject healthBooster;
     public GameObject attackSpeedBooster;
     GameObject spawnThisItem;
+
     [Header("Ganti Texture ini")]
     Texture m_MainTexture;
     public Texture defaultTexture;

@@ -12,6 +12,10 @@ public class menuController : MonoBehaviour
     public GameObject endPanel;
     public GameObject player;
 
+    public GameObject retryButton;
+    public GameObject restartButton;
+    public GameObject quitButton;
+
     public void NewGameButton()
     {
         SceneManager.LoadScene(newGameLevel);
@@ -32,6 +36,13 @@ public class menuController : MonoBehaviour
         endPanel.SetActive(true);
         endPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Game Over";
         player.SetActive(false);
+
+        retryButton.SetActive(true);
+        restartButton.SetActive(true);
+        quitButton.SetActive(true);
+        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void winGame()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class goalPortal : MonoBehaviour
 {
@@ -13,13 +14,17 @@ public class goalPortal : MonoBehaviour
     public GameObject MainCamera;
     public GameObject triggerBox;
     public GameObject playerObject;
-    // public Slider boosterSlider;
-    float BoosterProcessTime;
+
     public int chance;
     bool answer_1;
     bool answer_2;
     bool answer_3;
+    [Header("For Slider Interface")]
     public float maxProcessTime;
+    public Slider goalSlider;
+    float goalProcessTime;
+    public TextMeshProUGUI howManyChanceAreLeft;
+
     [Header("Goal point")]
     public GameObject spawnGoal;
     public Transform itemSpawnPoint;
@@ -50,11 +55,16 @@ public class goalPortal : MonoBehaviour
         answer_1 = true;
         answer_2 = false;
         answer_3 = false;
-        // boosterSlider.maxValue = maxProcessTime;
-        // boosterSlider.value = 0f;
-        // BoosterProcessTime = 0f;
+
         if(other.tag == "Player")
         {
+            //set the maximum value of the slider according to the given value
+            goalSlider.maxValue = maxProcessTime;
+            //set the intial value to 0 first
+            goalSlider.value = 0f;
+            goalProcessTime = 0f;
+
+            //do the other stuffs
             boosterCam.SetActive(true);
             Debug.Log("Process Should start here");  
             playerCombatCam.SetActive(false);
@@ -70,6 +80,7 @@ public class goalPortal : MonoBehaviour
     
     void Update()
     {
+        howManyChanceAreLeft.text =chance.ToString();
         if(choice && chance>0)
         {
             StartCoroutine(waitCoroutine());
@@ -147,6 +158,19 @@ public class goalPortal : MonoBehaviour
             playerObject.GetComponent<playerHealth>().PlayerDamage(30);
             chance += 3;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if(startSlider)
+        {
+            if(goalProcessTime <= maxProcessTime)
+            {
+                //add the value until the slider is full
+                goalProcessTime += 0.02f;
+                goalSlider.value = goalProcessTime;
+            }
+        }        
     }
 
     IEnumerator waitCoroutine()

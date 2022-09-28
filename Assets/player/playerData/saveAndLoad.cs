@@ -8,6 +8,8 @@ public class saveAndLoad : MonoBehaviour
     public GameObject player;
     public GameObject playerObj;
     public GameObject gun;
+    public GameObject endPanel;
+    // public GameObject pauseMenu;
     //step 4: now I can use them to save and load data by using these functions
     public void SavePlayer()
     {
@@ -18,6 +20,13 @@ public class saveAndLoad : MonoBehaviour
 
     public void LoadPlayer()
     {
+        // if accessed withing the lose game function then it will close the game over panel
+        endPanel.SetActive(false);
+        gameObject.GetComponent<pauseMenu>().resumeGame();
+        player.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         playerDatas data = saveSystem.LoadPlayer();
         Debug.Log(data.playerHP);
 
@@ -33,8 +42,13 @@ public class saveAndLoad : MonoBehaviour
         position.z = data.position[2];
         player.transform.position = position;
 
-        coinCollector.coinState.Clear();
-        coinCollector.coinState.AddRange(playerDatas.coinStateSave);
+        
+        if(playerDatas.coinStateSave.Count > 0)
+        {
+            coinCollector.coinState.Clear();
+            coinCollector.coinState.AddRange(playerDatas.coinStateSave);
+        }
+        
 
     }
 }
