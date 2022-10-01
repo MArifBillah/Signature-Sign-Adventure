@@ -34,6 +34,29 @@ public class goalPortal : MonoBehaviour
     public Texture A;
     public Texture B;
     public Texture C;
+    public Texture D;
+    public Texture E;
+    public Texture F;
+    public Texture G;
+    public Texture H;
+    public Texture I;
+    public Texture J;
+    public Texture K;
+    public Texture L;
+    public Texture M;
+    public Texture N;
+    public Texture O;
+    public Texture P;
+    public Texture Q;
+    public Texture R;
+    public Texture S;
+    public Texture T;
+    public Texture U;
+    public Texture V;
+    public Texture W;
+    public Texture X;
+    public Texture Y;
+    public Texture Z;
 
     int randomNumber;
     Renderer m_Renderer;
@@ -208,7 +231,7 @@ public class goalPortal : MonoBehaviour
                     Debug.Log("seharusnya tidak ada");
                     break;
             }
-            randomNumber = Random.Range(1, 4);
+            randomNumber = Random.Range(1, 27);
 
             //Fetch the Renderer from the GameObject
             m_Renderer = changeTextures.GetComponent<Renderer>();
@@ -232,6 +255,122 @@ public class goalPortal : MonoBehaviour
                     m_MainTexture = C;
                     answer.Add(KeyCode.C);
                     Debug.Log("texture changed to C");
+                    break;
+                case 4:
+                    Debug.Log("the i is = "+i);
+                    m_MainTexture = D;
+                    answer.Add(KeyCode.D);
+                    Debug.Log("texture changed to D");
+                    break;
+                case 5:
+                    m_MainTexture = E;
+                    answer.Add(KeyCode.E);
+                    Debug.Log("texture changed to E");
+                    break;
+                case 6:
+                    m_MainTexture = F;
+                    answer.Add(KeyCode.F);
+                    Debug.Log("texture changed to F");
+                    break;
+                case 7:
+                    m_MainTexture = G;
+                    answer.Add(KeyCode.G);
+                    Debug.Log("texture changed to G");
+                    break;
+                case 8:
+                    m_MainTexture = H;
+                    answer.Add(KeyCode.H);
+                    Debug.Log("texture changed to H");
+                    break;
+                case 9:
+                    m_MainTexture = I;
+                    answer.Add(KeyCode.I);
+                    Debug.Log("texture changed to I");
+                    break;
+                case 10:
+                    m_MainTexture = J;
+                    answer.Add(KeyCode.J);
+                    Debug.Log("texture changed to J");
+                    break;
+                case 11:
+                    m_MainTexture = K;
+                    answer.Add(KeyCode.K);
+                    Debug.Log("texture changed to K");
+                    break;
+                case 12:
+                    m_MainTexture = L;
+                    answer.Add(KeyCode.L);
+                    Debug.Log("texture changed to L");
+                    break;
+                case 13:
+                    m_MainTexture = M;
+                    answer.Add(KeyCode.M);
+                    Debug.Log("texture changed to M");
+                    break;
+                case 14:
+                    m_MainTexture = N;
+                    answer.Add(KeyCode.N);
+                    Debug.Log("texture changed to N");
+                    break;
+                case 15:
+                    m_MainTexture = O;
+                    answer.Add(KeyCode.O);
+                    Debug.Log("texture changed to O");
+                    break;
+                case 16:
+                    m_MainTexture = P;
+                    answer.Add(KeyCode.P);
+                    Debug.Log("texture changed to P");
+                    break;
+                case 17:
+                    m_MainTexture = Q;
+                    answer.Add(KeyCode.Q);
+                    Debug.Log("texture changed to Q");
+                    break;
+                case 18:
+                    m_MainTexture = R;
+                    answer.Add(KeyCode.R);
+                    Debug.Log("texture changed to R");
+                    break;
+                case 19:
+                    m_MainTexture = S;
+                    answer.Add(KeyCode.S);
+                    Debug.Log("texture changed to S");
+                    break;
+                case 20:
+                    m_MainTexture = T;
+                    answer.Add(KeyCode.T);
+                    Debug.Log("texture changed to T");
+                    break;
+                case 21:
+                    m_MainTexture = U;
+                    answer.Add(KeyCode.U);
+                    Debug.Log("texture changed to U");
+                    break;
+                case 22:
+                    m_MainTexture = V;
+                    answer.Add(KeyCode.V);
+                    Debug.Log("texture changed to V");
+                    break;
+                case 23:
+                    m_MainTexture = W;
+                    answer.Add(KeyCode.W);
+                    Debug.Log("texture changed to W");
+                    break;
+                case 24:
+                    m_MainTexture = X;
+                    answer.Add(KeyCode.X);
+                    Debug.Log("texture changed to X");
+                    break;
+                case 25:
+                    m_MainTexture = Y;
+                    answer.Add(KeyCode.Y);
+                    Debug.Log("texture changed to Y");
+                    break;
+                case 26:
+                    m_MainTexture = Z;
+                    answer.Add(KeyCode.Z);
+                    Debug.Log("texture changed to Z");
                     break;
 
                 default:

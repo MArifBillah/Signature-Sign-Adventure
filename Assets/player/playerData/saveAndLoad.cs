@@ -11,8 +11,28 @@ public class saveAndLoad : MonoBehaviour
     public GameObject gun;
     public GameObject endPanel;
     public GameObject minigame;
+    bool isMainMenu = false;
+    static bool isLoadingProgress = false;
+    public static bool isNewGame = false;
     // public GameObject pauseMenu;
     //step 4: now I can use them to save and load data by using these functions
+    void Start()
+    {
+        string activeScene = SceneManager.GetActiveScene().name;
+        if(activeScene == "mainMenu")
+        {
+            isMainMenu = true;
+        }
+    }
+    void Update()
+    {
+        if(!isMainMenu && isLoadingProgress && !isNewGame)
+        {
+            LoadPlayer();
+            isLoadingProgress = false;
+            isMainMenu = false;
+        }
+    }
     public void SavePlayer()
     {
         DataConverger sendingData = player.GetComponent<DataConverger>();
@@ -29,6 +49,7 @@ public class saveAndLoad : MonoBehaviour
         {
             if(PlayerPrefs.HasKey("LevelSaved"))
             {
+                isLoadingProgress = true;
                 string levelToLoad = PlayerPrefs.GetString("LevelSaved");
                 SceneManager.LoadScene(levelToLoad);
             }

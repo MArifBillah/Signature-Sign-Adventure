@@ -69,14 +69,17 @@ public class powerBoostMachine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("when player enter its " +choice);
         isInMinigame = true;
         boosterSlider.maxValue = maxProcessTime;
         boosterSlider.value = 0f;
         BoosterProcessTime = 0f;
         if(other.tag == "Player")
         {
+            choice = true;
             changeTexture();
             randomBoosterItem();
+            Debug.Log("then its "+choice);
             
             boosterCam.SetActive(true);
             playerCombatCam.SetActive(false);
@@ -93,8 +96,13 @@ public class powerBoostMachine : MonoBehaviour
     private void Update()
     {
         howManyChanceAreLeft.text =chance.ToString();
+            // Debug.Log("this is outside "+choice);
+            // Debug.Log(chance);
+            
         if(choice && chance>0)
         {     
+            // Debug.Log("this is inside "+choice);
+            // Debug.Log("this should be printed");
             StartCoroutine(waitCoroutine());
             //using 'anykey' because the bottom 'else' will consume everything including no input and immediately close the booster as soon as player touch it
             if(Input.anyKey)
@@ -169,12 +177,13 @@ public class powerBoostMachine : MonoBehaviour
     {
         //IF iSInMinigame you can't pause the game
         isInMinigame = false;
+        answerTime = false;
         changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);
         playerFreeCam.SetActive(true);
         boosterCam.SetActive(false);
         GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<playerMovement>().enabled = true;
-        gameObject.GetComponent<powerBoostMachine>().enabled = false;
+        // gameObject.GetComponent<powerBoostMachine>().enabled = false;
         
     }
 
@@ -182,7 +191,7 @@ public class powerBoostMachine : MonoBehaviour
     public void changeTexture()
     {
         Debug.Log("texture changed");
-        choice = true;
+        
         randomNumber = Random.Range(1, 26);
         //Fetch the Renderer from the GameObject
         m_Renderer = changeThisTexture.GetComponent<Renderer> ();
@@ -329,6 +338,7 @@ public class powerBoostMachine : MonoBehaviour
 
     private void randomBoosterItem()
     {
+        Debug.Log("Item randomized");
         itemRandom = Random.Range(1, 3);
         switch(itemRandom)
         {

@@ -21,13 +21,16 @@ public class menuController : MonoBehaviour
 
     public void NewGameButton()
     {
+        saveAndLoad.isNewGame = true;
         SceneManager.LoadScene(newGameLevel);
+        coinCollector.coinState.Clear();
     }
 
     public void LoadGameButton()
     {
         if(PlayerPrefs.HasKey("LevelSaved"))
         {
+            saveAndLoad.isNewGame = false;
             string levelToLoad = PlayerPrefs.GetString("LevelSaved");
             SceneManager.LoadScene(levelToLoad);
         }
@@ -35,6 +38,7 @@ public class menuController : MonoBehaviour
 
     public void LoadGameLevelOne()
     {
+        saveAndLoad.isNewGame = true;
         SceneManager.LoadScene("level_1");
     }
 
@@ -42,6 +46,7 @@ public class menuController : MonoBehaviour
     {
         if(level_1)
         {
+            saveAndLoad.isNewGame = true;
             SceneManager.LoadScene("level_2");
         }
         
@@ -51,6 +56,7 @@ public class menuController : MonoBehaviour
     {
         if(level_2)
         {
+            saveAndLoad.isNewGame = true;
             SceneManager.LoadScene("level_3");
         }
         
@@ -60,6 +66,7 @@ public class menuController : MonoBehaviour
     {
         if(level_3)
         {
+            saveAndLoad.isNewGame = true;
             SceneManager.LoadScene("level_4");
         }
         
