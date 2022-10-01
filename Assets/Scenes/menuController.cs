@@ -15,6 +15,9 @@ public class menuController : MonoBehaviour
     public GameObject retryButton;
     public GameObject restartButton;
     public GameObject quitButton;
+    public GameObject nextLevelButton;
+
+    public static bool level_1 = false, level_2 = false, level_3 = false, level_4 = false;
 
     public void NewGameButton()
     {
@@ -30,6 +33,38 @@ public class menuController : MonoBehaviour
         }
     }
 
+    public void LoadGameLevelOne()
+    {
+        SceneManager.LoadScene("level_1");
+    }
+
+    public void LoadGameLevelTwo()
+    {
+        if(level_1)
+        {
+            SceneManager.LoadScene("level_2");
+        }
+        
+    }
+
+    public void LoadGameLevelThree()
+    {
+        if(level_2)
+        {
+            SceneManager.LoadScene("level_3");
+        }
+        
+    }
+
+    public void LoadGameLevelFour()
+    {
+        if(level_3)
+        {
+            SceneManager.LoadScene("level_4");
+        }
+        
+    }
+
     public void loseGame()
     {
         Debug.Log("You lose loser");
@@ -40,6 +75,7 @@ public class menuController : MonoBehaviour
         retryButton.SetActive(true);
         restartButton.SetActive(true);
         quitButton.SetActive(true);
+        nextLevelButton.SetActive(false);
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -49,6 +85,15 @@ public class menuController : MonoBehaviour
     {
         endPanel.SetActive(true);
         endPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You Win";
+
+        player.SetActive(false);
+        nextLevelButton.SetActive(true);
+        retryButton.SetActive(false);
+        restartButton.SetActive(false);
+        quitButton.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
 

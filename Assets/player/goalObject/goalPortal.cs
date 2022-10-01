@@ -155,8 +155,13 @@ public class goalPortal : MonoBehaviour
         
         if(chance == 0)
         {
-            playerObject.GetComponent<playerHealth>().PlayerDamage(30);
-            chance += 3;
+                playerObject.GetComponent<playerHealth>().PlayerDamage(30);
+                chance += 3;
+        }
+
+        if(playerObject.GetComponent<playerHealth>().playerHP <= 0)
+        {
+            cancelGoal();
         }
     }
 
@@ -247,6 +252,7 @@ public class goalPortal : MonoBehaviour
     public void cancelGoal()
     {
         // changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);
+        choice = false;
         playerFreeCam.SetActive(true);
         boosterCam.SetActive(false);
         MainCamera.GetComponent<TPmove>().enabled = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class saveAndLoad : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class saveAndLoad : MonoBehaviour
     public GameObject playerObj;
     public GameObject gun;
     public GameObject endPanel;
+    public GameObject minigame;
     // public GameObject pauseMenu;
     //step 4: now I can use them to save and load data by using these functions
     public void SavePlayer()
@@ -21,6 +23,17 @@ public class saveAndLoad : MonoBehaviour
     public void LoadPlayer()
     {
         // if accessed withing the lose game function then it will close the game over panel
+        Debug.Log("trying to load the game");
+        string activeScene = SceneManager.GetActiveScene().name;
+        if(activeScene == "mainMenu")
+        {
+            if(PlayerPrefs.HasKey("LevelSaved"))
+            {
+                string levelToLoad = PlayerPrefs.GetString("LevelSaved");
+                SceneManager.LoadScene(levelToLoad);
+            }
+        }
+        Debug.Log("The Rest should also be loaded");
         endPanel.SetActive(false);
         gameObject.GetComponent<pauseMenu>().resumeGame();
         player.SetActive(true);
@@ -48,7 +61,5 @@ public class saveAndLoad : MonoBehaviour
             coinCollector.coinState.Clear();
             coinCollector.coinState.AddRange(playerDatas.coinStateSave);
         }
-        
-
     }
 }

@@ -13,6 +13,7 @@ public class saveController : MonoBehaviour
         {
             string activeScene = SceneManager.GetActiveScene().name;
             PlayerPrefs.SetString("LevelSaved", activeScene);
+             
             gameManager.GetComponent<saveAndLoad>().SavePlayer();
             Debug.Log(activeScene);
             gameObject.SetActive(false);

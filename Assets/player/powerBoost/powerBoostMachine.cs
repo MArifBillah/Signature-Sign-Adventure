@@ -31,6 +31,29 @@ public class powerBoostMachine : MonoBehaviour
     public Texture A;
     public Texture B;
     public Texture C;
+    public Texture D;
+    public Texture E;
+    public Texture F;
+    public Texture G;
+    public Texture H;
+    public Texture I;
+    public Texture J;
+    public Texture K;
+    public Texture L;
+    public Texture M;
+    public Texture N;
+    public Texture O;
+    public Texture P;
+    public Texture Q;
+    public Texture R;
+    public Texture S;
+    public Texture T;
+    public Texture U;
+    public Texture V;
+    public Texture W;
+    public Texture X;
+    public Texture Y;
+    public Texture Z;
     int randomNumber;
     int itemRandom;
     public bool choice = false;
@@ -144,12 +167,14 @@ public class powerBoostMachine : MonoBehaviour
 
     public void cancelBooster()
     {
+        //IF iSInMinigame you can't pause the game
         isInMinigame = false;
         changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);
         playerFreeCam.SetActive(true);
         boosterCam.SetActive(false);
         GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<playerMovement>().enabled = true;
+        gameObject.GetComponent<powerBoostMachine>().enabled = false;
         
     }
 
@@ -158,7 +183,7 @@ public class powerBoostMachine : MonoBehaviour
     {
         Debug.Log("texture changed");
         choice = true;
-        randomNumber = Random.Range(1, 4);
+        randomNumber = Random.Range(1, 26);
         //Fetch the Renderer from the GameObject
         m_Renderer = changeThisTexture.GetComponent<Renderer> ();
         Debug.Log("nomor randomnya adalah ="+randomNumber);
@@ -178,6 +203,121 @@ public class powerBoostMachine : MonoBehaviour
                 m_MainTexture = C;
                 answer = KeyCode.C;
                 Debug.Log("texture changed to C");
+                break;
+            case 4:
+                m_MainTexture = D;
+                answer = KeyCode.D;
+                Debug.Log("texture changed to D");
+                break;
+            case 5:
+                m_MainTexture = E;
+                answer = KeyCode.E;
+                Debug.Log("texture changed to E");
+                break;
+            case 6:
+                m_MainTexture = F;
+                answer = KeyCode.F;
+                Debug.Log("texture changed to F");
+                break;
+            case 7:
+                m_MainTexture = G;
+                answer = KeyCode.G;
+                Debug.Log("texture changed to G");
+                break;
+            case 8:
+                m_MainTexture = H;
+                answer = KeyCode.H;
+                Debug.Log("texture changed to H");
+                break;
+            case 9:
+                m_MainTexture = I;
+                answer = KeyCode.I;
+                Debug.Log("texture changed to I");
+                break;
+            case 10:
+                m_MainTexture = J;
+                answer = KeyCode.J;
+                Debug.Log("texture changed to J");
+                break;
+            case 11:
+                m_MainTexture = K;
+                answer = KeyCode.K;
+                Debug.Log("texture changed to K");
+                break;
+            case 12:
+                m_MainTexture = L;
+                answer = KeyCode.L;
+                Debug.Log("texture changed to L");
+                break;
+            case 13:
+                m_MainTexture = M;
+                answer = KeyCode.M;
+                Debug.Log("texture changed to M");
+                break;
+            case 14:
+                m_MainTexture = N;
+                answer = KeyCode.N;
+                Debug.Log("texture changed to N");
+                break;
+            case 15:
+                m_MainTexture = O;
+                answer = KeyCode.O;
+                Debug.Log("texture changed to O");
+                break;
+            case 16:
+                m_MainTexture = P;
+                answer = KeyCode.P;
+                Debug.Log("texture changed to P");
+                break;
+            case 17:
+                m_MainTexture = Q;
+                answer = KeyCode.Q;
+                Debug.Log("texture changed to Q");
+                break;
+            case 18:
+                m_MainTexture = R;
+                answer = KeyCode.R;
+                Debug.Log("texture changed to R");
+                break;
+            case 19:
+                m_MainTexture = S;
+                answer = KeyCode.S;
+                Debug.Log("texture changed to S");
+                break;
+            case 20:
+                m_MainTexture = T;
+                answer = KeyCode.T;
+                Debug.Log("texture changed to T");
+                break;
+            case 21:
+                m_MainTexture = U;
+                answer = KeyCode.U;
+                Debug.Log("texture changed to U");
+                break;
+            case 22:
+                m_MainTexture = V;
+                answer = KeyCode.V;
+                Debug.Log("texture changed to V");
+                break;
+            case 23:
+                m_MainTexture = W;
+                answer = KeyCode.W;
+                Debug.Log("texture changed to W");
+                break;
+            case 24:
+                m_MainTexture = X;
+                answer = KeyCode.X;
+                Debug.Log("texture changed to X");
+                break;
+            case 25:
+                m_MainTexture = Y;
+                answer = KeyCode.Y;
+                Debug.Log("texture changed to Y");
+                break;
+            case 26:
+                m_MainTexture = Z;
+                answer = KeyCode.Z;
+                Debug.Log("texture changed to Z");
                 break;
             default:
                 Debug.Log("Seharusnya ini gak di print");
