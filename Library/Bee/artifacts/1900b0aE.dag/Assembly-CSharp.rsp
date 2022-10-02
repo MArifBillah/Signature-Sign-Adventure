@@ -427,6 +427,7 @@
 "Assets/player/playerScript/TPmove.cs"
 "Assets/player/powerBoost/lookAtCam.cs"
 "Assets/player/powerBoost/powerBoostMachine.cs"
+"Assets/player/Store/currencyTracker.cs"
 "Assets/Scenes/menuController.cs"
 "Assets/Scenes/pauseMenu.cs"
 "Assets/Scenes/saveController.cs"

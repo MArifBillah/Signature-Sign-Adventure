@@ -11,7 +11,7 @@ public class menuController : MonoBehaviour
 
     public GameObject endPanel;
     public GameObject player;
-
+    public GameObject gameManager;
     public GameObject retryButton;
     public GameObject restartButton;
     public GameObject quitButton;
@@ -33,6 +33,7 @@ public class menuController : MonoBehaviour
             saveAndLoad.isNewGame = false;
             string levelToLoad = PlayerPrefs.GetString("LevelSaved");
             SceneManager.LoadScene(levelToLoad);
+            //the progress of the player will be loaded through the saveAndLoad script
         }
     }
 
@@ -98,6 +99,13 @@ public class menuController : MonoBehaviour
         retryButton.SetActive(false);
         restartButton.SetActive(false);
         quitButton.SetActive(true);
+
+        //these will save the amount of currency collected
+        //infinite coin bug alert
+            playerDatas data = saveSystem.LoadPlayer();
+            playerDatas.coinStored = data.totalCurrency + player.GetComponent<playerScore>().coinCollected;
+            Debug.Log("my current currency is now = "+playerDatas.coinStored);
+            gameManager.GetComponent<saveAndLoad>().SavePlayer();
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

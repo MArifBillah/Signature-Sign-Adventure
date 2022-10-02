@@ -12,6 +12,9 @@ public class playerDatas
     //these are from playerScore.cs
     public int enemyDestroyedCount;
     public int coinCollected;
+    //this one is for the store feature
+    public int totalCurrency;
+    public static int coinStored;
     //these are from shootingGun.cs
     public float timeBetweenShooting;
 
@@ -28,7 +31,7 @@ public class playerDatas
         enemyDestroyedCount = player.enemyDestroyedCount;
         coinCollected = player.coinCollected;
         timeBetweenShooting = player.timeBetweenShooting;
-
+        totalCurrency = coinStored;
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;

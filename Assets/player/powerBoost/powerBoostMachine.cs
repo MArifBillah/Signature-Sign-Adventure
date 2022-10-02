@@ -65,18 +65,23 @@ public class powerBoostMachine : MonoBehaviour
 
     public GameObject changeThisTexture;
     public static bool isInMinigame = false;
+    public GameObject guide;
 
 
     void OnTriggerEnter(Collider other)
     {
+        
         Debug.Log("when player enter its " +choice);
         isInMinigame = true;
+        answerTime = false;
         boosterSlider.maxValue = maxProcessTime;
         boosterSlider.value = 0f;
         BoosterProcessTime = 0f;
         if(other.tag == "Player")
         {
+            guide.SetActive(true);
             choice = true;
+            answer = KeyCode.None;
             changeTexture();
             randomBoosterItem();
             Debug.Log("then its "+choice);
@@ -103,6 +108,8 @@ public class powerBoostMachine : MonoBehaviour
         {     
             // Debug.Log("this is inside "+choice);
             // Debug.Log("this should be printed");
+            Debug.Log("BoosterProcessTime is : "+BoosterProcessTime);
+                        Debug.Log("MaxProcessTime is : "+maxProcessTime);
             StartCoroutine(waitCoroutine());
             //using 'anykey' because the bottom 'else' will consume everything including no input and immediately close the booster as soon as player touch it
             if(Input.anyKey)
@@ -111,11 +118,13 @@ public class powerBoostMachine : MonoBehaviour
                 //need to make interface for the waiting time
                 
                 //this will only take answer after the coroutine return the true value for answerTime var
-                if(answerTime)
+                //(BoosterProcessTime > maxProcessTime) the final value of BoosterProcesTime is actually slightly bigger than maxProcessTime, this doesn't really shows in the game itself but I have to make the condition using > in order to make it works
+            
+                if(answerTime && (BoosterProcessTime > maxProcessTime))
                 {
                     if(Input.GetKey(KeyCode.Space)) 
                     {
-                        choice = false;
+                        
                         cancelBooster();
                         player.transform.position = teleport.position;
                     }
@@ -176,6 +185,8 @@ public class powerBoostMachine : MonoBehaviour
     public void cancelBooster()
     {
         //IF iSInMinigame you can't pause the game
+        startSlider = false;
+        choice = false;
         isInMinigame = false;
         answerTime = false;
         changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);

@@ -12,22 +12,33 @@ public class saveAndLoad : MonoBehaviour
     public GameObject endPanel;
     public GameObject minigame;
     bool isMainMenu = false;
-    static bool isLoadingProgress = false;
+    public static bool isLoadingProgress = false;
     public static bool isNewGame = false;
+    // public static int currency;
     // public GameObject pauseMenu;
     //step 4: now I can use them to save and load data by using these functions
     void Start()
     {
+        Debug.Log("script is starting");
         string activeScene = SceneManager.GetActiveScene().name;
         if(activeScene == "mainMenu")
         {
             isMainMenu = true;
         }
+       
     }
     void Update()
     {
+        // Debug.Log("trying to check");
+        // Debug.Log("isMainMenu is "+isMainMenu);
+        // Debug.Log("isLoadingProgress is "+isLoadingProgress);
+        // Debug.Log("isNewGAme is "+isNewGame);
+        //the game will always load the player's progress if its not in main menu and is not a new game
         if(!isMainMenu && isLoadingProgress && !isNewGame)
         {
+            //patch work in haste
+            Debug.Log("Checked and loaded");
+                    Debug.Log("SaveAndLoad is first");
             LoadPlayer();
             isLoadingProgress = false;
             isMainMenu = false;
@@ -42,7 +53,8 @@ public class saveAndLoad : MonoBehaviour
 
     public void LoadPlayer()
     {
-        // if accessed withing the lose game function then it will close the game over panel
+        
+        // if accessed within the lose game function then it will close the game over panel
         Debug.Log("trying to load the game");
         string activeScene = SceneManager.GetActiveScene().name;
         if(activeScene == "mainMenu")
@@ -50,8 +62,10 @@ public class saveAndLoad : MonoBehaviour
             if(PlayerPrefs.HasKey("LevelSaved"))
             {
                 isLoadingProgress = true;
+                isNewGame = false;
                 string levelToLoad = PlayerPrefs.GetString("LevelSaved");
                 SceneManager.LoadScene(levelToLoad);
+                
             }
         }
         Debug.Log("The Rest should also be loaded");
@@ -79,7 +93,8 @@ public class saveAndLoad : MonoBehaviour
         
         if(playerDatas.coinStateSave.Count > 0)
         {
-            coinCollector.coinState.Clear();
+            Debug.Log("coinstate cleared and added");
+            coinCollector.coinState = new List<bool>();
             coinCollector.coinState.AddRange(playerDatas.coinStateSave);
         }
     }
