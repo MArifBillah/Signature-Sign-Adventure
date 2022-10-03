@@ -15,6 +15,7 @@ public class DataConverger : MonoBehaviour
     //these are from playerScore.cs
     public int enemyDestroyedCount;
     public int coinCollected;
+    public int totalCurrency;
     //these are from shootingGun.cs
     public float timeBetweenShooting;
 
@@ -40,5 +41,12 @@ public class DataConverger : MonoBehaviour
     public void ShootingGun()
     {
         timeBetweenShooting = gun.GetComponent<shootingGun>().timeBetweenShooting;
+    }
+
+    public void SaveCurrency()
+    {
+            playerDatas data = saveSystem.LoadPlayer();
+            totalCurrency = data.totalCurrency + player.GetComponent<playerScore>().coinCollected;
+            Debug.Log("my current currency is now = "+totalCurrency);
     }
 }

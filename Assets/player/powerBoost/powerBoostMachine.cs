@@ -100,16 +100,9 @@ public class powerBoostMachine : MonoBehaviour
 
     private void Update()
     {
-        howManyChanceAreLeft.text =chance.ToString();
-            // Debug.Log("this is outside "+choice);
-            // Debug.Log(chance);
-            
+        howManyChanceAreLeft.text =chance.ToString();   
         if(choice && chance>0)
         {     
-            // Debug.Log("this is inside "+choice);
-            // Debug.Log("this should be printed");
-            Debug.Log("BoosterProcessTime is : "+BoosterProcessTime);
-                        Debug.Log("MaxProcessTime is : "+maxProcessTime);
             StartCoroutine(waitCoroutine());
             //using 'anykey' because the bottom 'else' will consume everything including no input and immediately close the booster as soon as player touch it
             if(Input.anyKey)

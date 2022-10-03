@@ -47,15 +47,18 @@ public class saveAndLoad : MonoBehaviour
     public void SavePlayer()
     {
         DataConverger sendingData = player.GetComponent<DataConverger>();
+        sendingData.SaveCurrency();
+        player.GetComponent<playerScore>().coinCollected = 0;
         saveSystem.SavePlayer(sendingData);
         Debug.Log("data saved" +sendingData.playerHP);
     }
 
     public void LoadPlayer()
     {
+        //to stop player from having infinite amount of coins
         
         // if accessed within the lose game function then it will close the game over panel
-        Debug.Log("trying to load the game");
+        // Debug.Log("trying to load the game");
         string activeScene = SceneManager.GetActiveScene().name;
         if(activeScene == "mainMenu")
         {
@@ -68,7 +71,8 @@ public class saveAndLoad : MonoBehaviour
                 
             }
         }
-        Debug.Log("The Rest should also be loaded");
+        // Debug.Log("The Rest should also be loaded");
+        // player.GetComponent<playerScore>().coinCollected = 0;
         endPanel.SetActive(false);
         gameObject.GetComponent<pauseMenu>().resumeGame();
         player.SetActive(true);
@@ -81,7 +85,7 @@ public class saveAndLoad : MonoBehaviour
         playerObj.GetComponent<playerHealth>().playerHP = data.playerHP;
         playerObj.GetComponent<playerHealth>().playerMaxHP = data.playerMaxHP;
         player.GetComponent<playerScore>().enemyDestroyedCount = data.enemyDestroyedCount;
-        player.GetComponent<playerScore>().coinCollected = data.coinCollected;
+        player.GetComponent<playerScore>().coinCollected = 0;
         gun.GetComponent<shootingGun>().timeBetweenShooting = data.timeBetweenShooting;
 
         Vector3 position;

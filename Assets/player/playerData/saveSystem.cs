@@ -22,7 +22,7 @@ public static class saveSystem
         string path = Application.persistentDataPath+"/Player.save";
         if(File.Exists(path))
         {
-            Debug.Log("trying to load the data");
+            // Debug.Log("trying to load the data");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
