@@ -43,10 +43,16 @@ public class DataConverger : MonoBehaviour
         timeBetweenShooting = gun.GetComponent<shootingGun>().timeBetweenShooting;
     }
 
-    public void SaveCurrency()
-    {
-            playerDatas data = saveSystem.LoadPlayer();
-            totalCurrency = data.totalCurrency + player.GetComponent<playerScore>().coinCollected;
-            Debug.Log("my current currency is now = "+totalCurrency);
-    }
+    // public void SaveCurrency()
+    // {
+    //         playerDatas data = saveSystem.LoadPlayer();
+    //         totalCurrency = data.totalCurrency + player.GetComponent<playerScore>().coinCollected;
+    //         Debug.Log("my current currency is now = "+totalCurrency);
+    // }
+
+    // public void substractCoin(int usedCoin)
+    // {
+    //     playerDatas data = saveSystem.LoadPlayer();
+    //     totalCurrency = data.totalCurrency + usedCoin;
+    // }
 }

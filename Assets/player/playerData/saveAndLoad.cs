@@ -29,10 +29,7 @@ public class saveAndLoad : MonoBehaviour
     }
     void Update()
     {
-        // Debug.Log("trying to check");
-        // Debug.Log("isMainMenu is "+isMainMenu);
-        // Debug.Log("isLoadingProgress is "+isLoadingProgress);
-        // Debug.Log("isNewGAme is "+isNewGame);
+
         //the game will always load the player's progress if its not in main menu and is not a new game
         if(!isMainMenu && isLoadingProgress && !isNewGame)
         {
@@ -43,14 +40,22 @@ public class saveAndLoad : MonoBehaviour
             isLoadingProgress = false;
             isMainMenu = false;
         }
+
+    
+    
     }
     public void SavePlayer()
     {
         DataConverger sendingData = player.GetComponent<DataConverger>();
-        sendingData.SaveCurrency();
+        //this is where the function to update the currency amount in DataConverger is happening
+        // sendingData.SaveCurrency();
+        int currencyStored;
+        currencyStored = PlayerPrefs.GetInt("currencyStored");
+        currencyStored += player.GetComponent<playerScore>().coinCollected;
+        PlayerPrefs.SetInt("currencyStored", currencyStored);
+        //reset the player score to prevent infinite coins bug
         player.GetComponent<playerScore>().coinCollected = 0;
         saveSystem.SavePlayer(sendingData);
-        Debug.Log("data saved" +sendingData.playerHP);
     }
 
     public void LoadPlayer()
@@ -80,7 +85,7 @@ public class saveAndLoad : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerDatas data = saveSystem.LoadPlayer();
-        Debug.Log(data.playerHP);
+        // Debug.Log(data.playerHP);
 
         playerObj.GetComponent<playerHealth>().playerHP = data.playerHP;
         playerObj.GetComponent<playerHealth>().playerMaxHP = data.playerMaxHP;
@@ -95,11 +100,11 @@ public class saveAndLoad : MonoBehaviour
         player.transform.position = position;
 
         
-        if(playerDatas.coinStateSave.Count > 0)
-        {
-            Debug.Log("coinstate cleared and added");
-            coinCollector.coinState = new List<bool>();
-            coinCollector.coinState.AddRange(playerDatas.coinStateSave);
-        }
+        // if(playerDatas.coinStateSave.Count > 0)
+        // {
+        //     Debug.Log("coinstate cleared and added");
+        //     coinCollector.coinState = new List<bool>();
+        //     coinCollector.coinState.AddRange(playerDatas.coinStateSave);
+        // }
     }
 }

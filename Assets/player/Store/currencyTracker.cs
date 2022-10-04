@@ -6,17 +6,12 @@ using TMPro;
 public class currencyTracker : MonoBehaviour
 {
     // Start is called before the first frame update
-    int currency;
     public TextMeshProUGUI storeCoins;
-    void Start()
-    {
-        playerDatas data = saveSystem.LoadPlayer();
-        currency = data.totalCurrency;
-    }
-
+    int currencyStored;
     // Update is called once per frame
     void Update()
     {
-        storeCoins.text = currency.ToString();
+        currencyStored = PlayerPrefs.GetInt("currencyStored");
+        storeCoins.text = currencyStored.ToString();
     }
 }

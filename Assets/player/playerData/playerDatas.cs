@@ -13,7 +13,7 @@ public class playerDatas
     public int enemyDestroyedCount;
     public int coinCollected;
     //this one is for the store feature
-    public int totalCurrency;
+    // public int totalCurrency;
     //these are from shootingGun.cs
     public float timeBetweenShooting;
 
@@ -21,7 +21,7 @@ public class playerDatas
     public float[] position;
 
     //saving coin position
-    public static List<bool> coinStateSave = new List<bool>();
+    // public static List<bool> coinStateSave = new List<bool>();
 
     public playerDatas (DataConverger player)
     {
@@ -30,15 +30,15 @@ public class playerDatas
         enemyDestroyedCount = player.enemyDestroyedCount;
         coinCollected = player.coinCollected;
         timeBetweenShooting = player.timeBetweenShooting;
-        totalCurrency = player.totalCurrency;
+        // totalCurrency = player.totalCurrency;
 
         position = new float[3];
         position[0] = player.transform.position.x +2;
         position[1] = player.transform.position.y+2;
         position[2] = player.transform.position.z+2;
 
-        coinStateSave.Clear();
-        coinStateSave.AddRange(coinCollector.coinState);
+        // coinStateSave.Clear();
+        // coinStateSave.AddRange(coinCollector.coinState);
     }
 
 }

@@ -16,9 +16,10 @@ public class playerScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerDatas data = saveSystem.LoadPlayer();
+        int currencyStored;
+        currencyStored = PlayerPrefs.GetInt("currencyStored");
         enemyDestroyed.text = enemyDestroyedCount.ToString();
-        coinCollection.text = data.totalCurrency.ToString();
+        coinCollection.text = currencyStored.ToString();
         coinCollectedInThisSession.text = coinCollected.ToString();
     }
 

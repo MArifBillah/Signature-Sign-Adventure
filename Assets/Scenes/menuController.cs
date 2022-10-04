@@ -23,7 +23,7 @@ public class menuController : MonoBehaviour
     {
         saveAndLoad.isNewGame = true;
         SceneManager.LoadScene(newGameLevel);
-        coinCollector.coinState.Clear();
+        // coinCollector.coinState.Clear();
     }
 
     public void LoadGameButton()
