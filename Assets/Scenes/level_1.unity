@@ -35682,7 +35682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826776335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -661.06, y: -388.9, z: 2.94}
+  m_LocalPosition: {x: -661.06, y: -377, z: 2.94}
   m_LocalScale: {x: 2.9003, y: 2.9003, z: 2.9003}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68269,6 +68269,7 @@ GameObject:
   - component: {fileID: 1566668080}
   - component: {fileID: 5523745077500018450}
   - component: {fileID: 1566668082}
+  - component: {fileID: 5523745077500018451}
   - component: {fileID: 1438268951371797165}
   - component: {fileID: 1566668083}
   m_Layer: 11
@@ -120075,7 +120076,7 @@ PrefabInstance:
       objectReference: {fileID: 143832809}
     - target: {fileID: 4942868708255825481, guid: 9af354b15257dbe469818c0c08c041a2, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4942868708255825487, guid: 9af354b15257dbe469818c0c08c041a2, type: 3}
       propertyPath: m_Name
@@ -120396,6 +120397,20 @@ MonoBehaviour:
   coinCollected: 0
   totalCurrency: 0
   timeBetweenShooting: 0
+--- !u!114 &5523745077500018451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566668078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ee5158a117e124bac3563b257d0835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item_1: {fileID: 919132148652275542}
+  item_2: {fileID: 1342140674}
 --- !u!4 &5524994671162464530
 Transform:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class menuController : MonoBehaviour
         if(PlayerPrefs.HasKey("LevelSaved"))
         {
             saveAndLoad.isNewGame = false;
+            saveAndLoad.isLoadingProgress = true;
             string levelToLoad = PlayerPrefs.GetString("LevelSaved");
             SceneManager.LoadScene(levelToLoad);
             //the progress of the player will be loaded through the saveAndLoad script

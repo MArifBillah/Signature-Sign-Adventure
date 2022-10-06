@@ -13,10 +13,11 @@ public class saveAndLoad : MonoBehaviour
     public GameObject minigame;
     bool isMainMenu = false;
     public static bool isLoadingProgress = false;
-    public static bool isNewGame = false;
+    public static bool isNewGame;
     // public static int currency;
     // public GameObject pauseMenu;
     //step 4: now I can use them to save and load data by using these functions
+    int whichLevel;
     void Start()
     {
         Debug.Log("script is starting");
@@ -24,6 +25,14 @@ public class saveAndLoad : MonoBehaviour
         if(activeScene == "mainMenu")
         {
             isMainMenu = true;
+        }
+        else if(activeScene == "level_1")
+        {
+            whichLevel = 0;
+        }
+        else if(activeScene == "level_2")
+        {
+            whichLevel = 1;
         }
        
     }
@@ -40,10 +49,12 @@ public class saveAndLoad : MonoBehaviour
             isLoadingProgress = false;
             isMainMenu = false;
         }
-
-    
-    
+        else if(isNewGame){
+                coinCollector.coinState[whichLevel].Clear();
+                isNewGame = false;
+        }
     }
+
     public void SavePlayer()
     {
         DataConverger sendingData = player.GetComponent<DataConverger>();
@@ -56,10 +67,16 @@ public class saveAndLoad : MonoBehaviour
         //reset the player score to prevent infinite coins bug
         player.GetComponent<playerScore>().coinCollected = 0;
         saveSystem.SavePlayer(sendingData);
+
+        // new coin collector feature
+
     }
 
+    // List<bool> coinStateSaveLoad = new List<bool>();
     public void LoadPlayer()
     {
+        // isNewGame = false;
+        coinCollector.counter = 0;
         //to stop player from having infinite amount of coins
         
         // if accessed within the lose game function then it will close the game over panel
@@ -69,14 +86,15 @@ public class saveAndLoad : MonoBehaviour
         {
             if(PlayerPrefs.HasKey("LevelSaved"))
             {
+                Debug.Log("Level loaded");
                 isLoadingProgress = true;
-                isNewGame = false;
+                // isNewGame = false;
                 string levelToLoad = PlayerPrefs.GetString("LevelSaved");
                 SceneManager.LoadScene(levelToLoad);
                 
             }
         }
-        // Debug.Log("The Rest should also be loaded");
+        
         // player.GetComponent<playerScore>().coinCollected = 0;
         endPanel.SetActive(false);
         gameObject.GetComponent<pauseMenu>().resumeGame();
@@ -86,7 +104,7 @@ public class saveAndLoad : MonoBehaviour
 
         playerDatas data = saveSystem.LoadPlayer();
         // Debug.Log(data.playerHP);
-
+        
         playerObj.GetComponent<playerHealth>().playerHP = data.playerHP;
         playerObj.GetComponent<playerHealth>().playerMaxHP = data.playerMaxHP;
         player.GetComponent<playerScore>().enemyDestroyedCount = data.enemyDestroyedCount;
@@ -99,12 +117,27 @@ public class saveAndLoad : MonoBehaviour
         position.z = data.position[2];
         player.transform.position = position;
 
-        
-        // if(playerDatas.coinStateSave.Count > 0)
-        // {
-        //     Debug.Log("coinstate cleared and added");
-        //     coinCollector.coinState = new List<bool>();
-        //     coinCollector.coinState.AddRange(playerDatas.coinStateSave);
-        // }
+        // coinStateSaveLoad = new List<bool>();
+        // coinStateSaveLoad.AddRange(data.coinStateSave);
+
+        Debug.Log("the length of coinstatesave is = "+data.coinStateSave[whichLevel].Count);
+        //  Debug.Log("the length of coinstatesave is = "+coinCollector.coinState[0].Count);
+        // data.coinStateSave[0] = true;
+        // Debug.Log("This is the state of data.coinStateSave = "+ data.coinStateSave[0][0]);
+        Debug.Log("The Rest should also be loaded");
+
+
+        if(data.coinStateSave[whichLevel].Count > 0 )
+        {
+            
+            Debug.Log("coinstate cleared and added");
+                coinCollector.coinState[whichLevel].Clear();
+                coinCollector.coinState[whichLevel].AddRange(data.coinStateSave[whichLevel]);
+                Debug.Log("saved level "+whichLevel);
+            // coinCollector.coinState.AddRange(data.coinStateSave);
+            // Debug.Log("This is the state of coinCollector.coinState = "+ coinCollector.coinState[106]);
+            // Debug.Log("the length of coinstatesave is = "+coinCollector.coinState.Count);
+
+        }
     }
 }

@@ -18,6 +18,8 @@ public class accSelector : MonoBehaviour
     void Start()
     {
         
+        item1 = PlayerPrefs.GetInt("Item1")==1?true:false;
+        item2 = PlayerPrefs.GetInt("Item2")==1?true:false;
         changeItem();
         unlockItem1 = PlayerPrefs.GetInt("unlockItem1")==1?true:false;
         Debug.Log(unlockItem1);
@@ -45,6 +47,8 @@ public class accSelector : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("unlockItem1",1);
+        PlayerPrefs.SetInt("Item1",item1?1:0);
+        PlayerPrefs.SetInt("Item2",item2?1:0);
     }
 
     public void equipItem_1()
