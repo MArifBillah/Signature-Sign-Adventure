@@ -414,6 +414,8 @@
 "Assets/player/itemScript/attackSpeedBoosterScript.cs"
 "Assets/player/itemScript/healiingItemScript.cs"
 "Assets/player/itemScript/healthBoosterScript.cs"
+"Assets/player/itemScript/shieldBooster.cs"
+"Assets/player/itemScript/shieldItem.cs"
 "Assets/player/itemScript/spin.cs"
 "Assets/player/level2_asset/ice/groundDragOnIce.cs"
 "Assets/player/movingPlatform 1/movingPlatform.cs"

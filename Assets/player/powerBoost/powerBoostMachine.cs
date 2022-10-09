@@ -23,6 +23,7 @@ public class powerBoostMachine : MonoBehaviour
     public Transform itemSpawnPoint;
     public GameObject healthBooster;
     public GameObject attackSpeedBooster;
+    public GameObject shieldBooster;
     GameObject spawnThisItem;
 
     [Header("Ganti Texture ini")]
@@ -343,7 +344,7 @@ public class powerBoostMachine : MonoBehaviour
     private void randomBoosterItem()
     {
         Debug.Log("Item randomized");
-        itemRandom = Random.Range(1, 3);
+        itemRandom = Random.Range(1, 4);
         switch(itemRandom)
         {
             case 1:
@@ -351,6 +352,9 @@ public class powerBoostMachine : MonoBehaviour
                 break;
             case 2:
                 spawnThisItem = attackSpeedBooster;
+                break;
+            case 3:
+                spawnThisItem = shieldBooster;
                 break;
             default:
                 Debug.Log("Jangan diprint");

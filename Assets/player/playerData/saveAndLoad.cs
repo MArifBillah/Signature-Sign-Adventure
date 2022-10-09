@@ -11,6 +11,7 @@ public class saveAndLoad : MonoBehaviour
     public GameObject gun;
     public GameObject endPanel;
     public GameObject minigame;
+    public GameObject shieldBoost;
     bool isMainMenu = false;
     public static bool isLoadingProgress = false;
     public static bool isNewGame;
@@ -59,7 +60,6 @@ public class saveAndLoad : MonoBehaviour
     {
         DataConverger sendingData = player.GetComponent<DataConverger>();
         //this is where the function to update the currency amount in DataConverger is happening
-        // sendingData.SaveCurrency();
         int currencyStored;
         currencyStored = PlayerPrefs.GetInt("currencyStored");
         currencyStored += player.GetComponent<playerScore>().coinCollected;
@@ -67,8 +67,6 @@ public class saveAndLoad : MonoBehaviour
         //reset the player score to prevent infinite coins bug
         player.GetComponent<playerScore>().coinCollected = 0;
         saveSystem.SavePlayer(sendingData);
-
-        // new coin collector feature
 
     }
 
@@ -95,7 +93,6 @@ public class saveAndLoad : MonoBehaviour
             }
         }
         
-        // player.GetComponent<playerScore>().coinCollected = 0;
         endPanel.SetActive(false);
         gameObject.GetComponent<pauseMenu>().resumeGame();
         player.SetActive(true);
@@ -103,13 +100,16 @@ public class saveAndLoad : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerDatas data = saveSystem.LoadPlayer();
-        // Debug.Log(data.playerHP);
+        
         
         playerObj.GetComponent<playerHealth>().playerHP = data.playerHP;
         playerObj.GetComponent<playerHealth>().playerMaxHP = data.playerMaxHP;
         player.GetComponent<playerScore>().enemyDestroyedCount = data.enemyDestroyedCount;
         player.GetComponent<playerScore>().coinCollected = 0;
         gun.GetComponent<shootingGun>().timeBetweenShooting = data.timeBetweenShooting;
+        shieldBoost.GetComponent<shieldBooster>().shield = data.shield;
+        shieldBoost.GetComponent<shieldBooster>().shieldHealth = data.shieldHealth;
+         shieldBoost.GetComponent<shieldBooster>().isShieldActive = data.isShieldActive;
 
         Vector3 position;
         position.x = data.position[0];

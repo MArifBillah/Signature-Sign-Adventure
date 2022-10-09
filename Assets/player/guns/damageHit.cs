@@ -12,6 +12,7 @@ public class damageHit : MonoBehaviour
     //  Destroy(gameObject, 10);   
     }
 
+
     void Update()
     {
     }

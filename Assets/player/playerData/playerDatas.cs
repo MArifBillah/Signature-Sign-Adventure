@@ -18,8 +18,13 @@ public class playerDatas
     //these are from shootingGun.cs
     public float timeBetweenShooting;
 
+    //these are from shieldBooster
+    public int shield;
+    public int shieldHealth;
+    public bool isShieldActive;
     //this is the position of the Player
     public float[] position;
+
 
     //saving coin position
     public List<List<bool>> coinStateSave = new List<List<bool>>();
@@ -32,6 +37,9 @@ public class playerDatas
         coinCollected = player.coinCollected;
         timeBetweenShooting = player.timeBetweenShooting;
         // totalCurrency = player.totalCurrency;
+        shield = player.shield;
+        shieldHealth = player.shieldHealth;
+        isShieldActive = player.isShieldActive;
 
         position = new float[3];
         position[0] = player.transform.position.x +2;

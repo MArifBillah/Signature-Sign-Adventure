@@ -9,6 +9,7 @@ public class DataConverger : MonoBehaviour
     public GameObject player;
     public GameObject playerObj;
     public GameObject gun;
+    public GameObject ShieldBoosting;
     //these are from playerHealth.cs
     public float playerHP;
     public float playerMaxHP;
@@ -18,12 +19,17 @@ public class DataConverger : MonoBehaviour
     public int totalCurrency;
     //these are from shootingGun.cs
     public float timeBetweenShooting;
+    //these are from shieldBooster.cs
+    public int shieldHealth;
+    public int shield;
+    public bool isShieldActive;
 
     void Update()
     {
         PlayerHealth();
         PlayerScore();
         ShootingGun();
+        ShieldBooster();
     }
     public void PlayerHealth()
     {
@@ -41,6 +47,13 @@ public class DataConverger : MonoBehaviour
     public void ShootingGun()
     {
         timeBetweenShooting = gun.GetComponent<shootingGun>().timeBetweenShooting;
+    }
+
+    public void ShieldBooster()
+    {
+        shield = ShieldBoosting.GetComponent<shieldBooster>().shield;
+        shieldHealth = ShieldBoosting.GetComponent<shieldBooster>().shieldHealth;
+        isShieldActive = ShieldBoosting.GetComponent<shieldBooster>().isShieldActive;
     }
 
     // public void SaveCurrency()
