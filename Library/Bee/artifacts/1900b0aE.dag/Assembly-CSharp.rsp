@@ -401,6 +401,7 @@
 "Assets/#NVJOB Water Shaders V2/Example Scenes/PostProcessing/Runtime/Utils/MaterialFactory.cs"
 "Assets/#NVJOB Water Shaders V2/Example Scenes/PostProcessing/Runtime/Utils/RenderTextureFactory.cs"
 "Assets/#NVJOB Water Shaders V2/Example Scenes/PostProcessing/Utilities/CustomMotionTexture/ExampleWheelController.cs"
+"Assets/cutscenes/cutscene_1.cs"
 "Assets/NewBehaviourScript.cs"
 "Assets/player/coinCollect/coinCollector.cs"
 "Assets/player/enemy/enemy.cs"

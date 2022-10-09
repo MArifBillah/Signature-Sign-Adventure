@@ -8,6 +8,7 @@ public class coinCollector : MonoBehaviour
     public GameObject player;
     public bool isDestroyed = false;
     public static List<List<bool>> coinState = new List<List<bool>>();
+    public AudioSource coinSound;
  
     int listPosition;
     public static int counter = 0;
@@ -93,6 +94,7 @@ public class coinCollector : MonoBehaviour
         if(other.tag == "Player")
         {
             isDestroyed = true;
+            coinSound.Play();
             // PlayerPrefs.SetInt(coinName, isDestroyed?1:0);
             player.GetComponent<playerScore>().coinCollected++;
             coinState[whichLevel][listPosition] = isDestroyed;

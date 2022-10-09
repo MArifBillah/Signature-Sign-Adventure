@@ -7,6 +7,8 @@ using TMPro;
 public class shieldBooster : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource shieldSound;
+    public AudioSource shieldSoundImpact;
     public int shieldHealth;
     public int shield;
     public bool isShieldActive;
@@ -40,6 +42,7 @@ public class shieldBooster : MonoBehaviour
 
         if(Input.GetKey(KeyCode.E) && shield > 0 && !powerBoostMachine.isInMinigame && !isShieldActive)
         {
+            shieldSound.Play();
             Debug.Log("Shield activated");
             shield--;
             isShieldActive = true;
@@ -55,6 +58,7 @@ public class shieldBooster : MonoBehaviour
     {
         if(other.tag == "bullet")
         {
+            shieldSoundImpact.Play();
             shieldHealth -= 10;
             Destroy(other);
         }
@@ -64,6 +68,7 @@ public class shieldBooster : MonoBehaviour
     {
             shieldHealth = 100;
             isShieldActive = false;
+            shieldSlider.gameObject.SetActive(false);
             gameObject.GetComponent<BoxCollider>().enabled = false;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
     }

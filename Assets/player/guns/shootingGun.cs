@@ -7,6 +7,7 @@ using TMPro;
 public class shootingGun : MonoBehaviour
 {
     public GameObject bullet;
+    public AudioSource shootingSound;
 
     //bullet force
     public float shootForce, upwardForce;
@@ -80,6 +81,7 @@ public class shootingGun : MonoBehaviour
 
     private void Shoot()
     {
+        shootingSound.Play();
         readyToShoot = false;
 
         //find the exact hit position using a raycast

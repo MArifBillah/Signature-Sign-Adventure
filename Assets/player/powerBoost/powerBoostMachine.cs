@@ -72,7 +72,6 @@ public class powerBoostMachine : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         
-        Debug.Log("when player enter its " +choice);
         isInMinigame = true;
         answerTime = false;
         boosterSlider.maxValue = maxProcessTime;
@@ -85,13 +84,12 @@ public class powerBoostMachine : MonoBehaviour
             answer = KeyCode.None;
             changeTexture();
             randomBoosterItem();
-            Debug.Log("then its "+choice);
             
             boosterCam.SetActive(true);
             playerCombatCam.SetActive(false);
             playerFreeCam.SetActive(false);
 
-            GameObject.FindWithTag("Player").GetComponent<playerMovement>().enabled = false;
+            player.GetComponent<playerMovement>().enabled = false;
             GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = false;
             // GameObject.Find("Main Camera").GetComponent<lookAtCam>().cheese(); //nanti diperbaiki lagi
             GameObject.Find("astroguy_running").GetComponent<Animator>().SetBool("isRunning", false);

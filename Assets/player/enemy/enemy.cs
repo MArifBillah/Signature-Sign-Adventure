@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class enemy : MonoBehaviour
 {
+    public AudioSource enemyShootingSound;
     public NavMeshAgent agent;
     public Transform player;
     public GameObject projectile; 
@@ -125,6 +126,7 @@ public class enemy : MonoBehaviour
         {
             //attack code
             GameObject currentBullet = Instantiate(enemyGun, attackPoint.position, Quaternion.identity);
+            enemyShootingSound.Play();
             currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 32f, ForceMode.Impulse);
             destroyed = currentBullet;
             Destroy(currentBullet, 1f);

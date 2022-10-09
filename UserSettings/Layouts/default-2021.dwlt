@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1366
     height: 725
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 20
+  controlID: 56
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 21
+  controlID: 62
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 22
+  controlID: 63
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 321
     height: 372
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 696
     height: 372
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -244,8 +244,8 @@ MonoBehaviour:
     y: 372
     width: 1017
     height: 303
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
@@ -407,7 +407,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c2b1feff96b6fefff83fffffa046ffff3c7bffff3e7bffff407bffff427bffffc67bffffca7bffffcc7bffffd67bffff9c7effffaaabffffaeabffffb2abffff7eacffff82acffff86acffff8aacffffbef9ffff1cfbffffa06e00006274000032750000227d00009c890000a68d0000c08d0000f49000000291000036910000d69602001c9702005e970200ca9702009a9802000a99020050780300167e0300e67e0300c8860300a6940300
+      m_ExpandedIDs: 0c4dfffff44fffff105affff8863ffff1c64ffff0eebffff1ef4ffff1cfbffffa263000052690000186f0000e86f000030720000ea77000008780000c8850000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -656,9 +656,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -370.61288, y: 18.26753, z: 97.21596}
+    m_Target: {x: -197.5498, y: 24.679932, z: 88.972046}
     speed: 2
-    m_Value: {x: -370.61288, y: 18.26753, z: 97.21596}
+    m_Value: {x: -197.5498, y: 24.679932, z: 88.972046}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -705,13 +705,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.035530858, y: -0.82386976, z: 0.051974256, w: -0.5632823}
+    m_Target: {x: -0.026951443, y: -0.57666016, z: -0.019033883, w: 0.8163538}
     speed: 2
-    m_Value: {x: -0.03553064, y: -0.82386476, z: 0.05197394, w: -0.5632789}
+    m_Value: {x: -0.025753394, y: -0.57544583, z: -0.018129656, w: 0.8172333}
   m_Size:
-    m_Target: 1.3568541
+    m_Target: 121.62063
     speed: 2
-    m_Value: 1.3568541
+    m_Value: 121.62063
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -937,22 +937,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/player/playerData
+    - Assets/player/coinCollect
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/player/playerData
+  - Assets/player/coinCollect
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\unity\Gemastik 15\Signature-Sign-Adventure
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 106}
-    m_SelectedIDs: 96970000
-    m_LastClickedID: 38806
-    m_ExpandedIDs: 000000000a62000018620000949700009c97000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 90}
+    m_SelectedIDs: 60940000
+    m_LastClickedID: 37984
+    m_ExpandedIDs: 00000000909300003c94000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -980,7 +980,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000a620000
+    m_ExpandedIDs: 0000000090930000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1094,7 +1094,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -51598
+  m_LastSelectedObjectID: -3836
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
