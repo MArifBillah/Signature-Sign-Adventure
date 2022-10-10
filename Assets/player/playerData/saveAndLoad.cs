@@ -26,6 +26,10 @@ public class saveAndLoad : MonoBehaviour
         if(activeScene == "mainMenu")
         {
             isMainMenu = true;
+            menuController.level_1 = PlayerPrefs.GetInt("level_1_completed")==1?true:false;
+            menuController.level_2 = PlayerPrefs.GetInt("level_2_completed")==1?true:false;
+            menuController.level_3 = PlayerPrefs.GetInt("level_3_completed")==1?true:false;
+            menuController.level_4 = PlayerPrefs.GetInt("level_4_completed")==1?true:false;
         }
         else if(activeScene == "level_1")
         {
