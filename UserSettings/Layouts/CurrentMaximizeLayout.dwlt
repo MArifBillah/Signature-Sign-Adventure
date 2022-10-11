@@ -188,8 +188,8 @@ MonoBehaviour:
     y: 0
     width: 320
     height: 424
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -226,23 +226,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 96dafcff22fefcffd2fffcffc628fdff10f8fffff0faffff446b00005a6f0000ee7000001c7a00003a7a000066860000888700001e880000348800004c8d00003ee00100d2e001002ce101004ae10100a2e101004ae20100ee760200c652030018530300425303004a53030054530300da5303009a540300
+      m_SelectedIDs: 06600000
+      m_LastClickedID: 24582
+      m_ExpandedIDs: fe64ffff0865ffffec7effff1c80ffffa681ffff38eaffff42ebffff44ebffff48ebffffacf4ffff98f6ffffd2f7fffff0faffff725e0000d85e0000005f0000085f0000225f00002c5f0000ea5f00004a60000062600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: menuCanvas
-        m_OriginalName: menuCanvas
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 217798
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -506,9 +506,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 903.7163, y: 434.67868, z: 4.008629}
+    m_Target: {x: 732.85767, y: 364.05652, z: -7.1469727}
     speed: 2
-    m_Value: {x: 903.7163, y: 434.67868, z: 4.008629}
+    m_Value: {x: 732.85767, y: 364.05652, z: -7.1469727}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 487.94122
+    m_Target: 512.9524
     speed: 2
-    m_Value: 487.94122
+    m_Value: 512.9524
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -815,22 +815,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/UI
+    - Assets/MenuScript
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/UI
+  - Assets/MenuScript
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\unity\Gemastik 15\Signature-Sign-Adventure
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 382}
-    m_SelectedIDs: 1e970000
-    m_LastClickedID: 38686
-    m_ExpandedIDs: 000000000697000014970000189700003e97000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: a8630000
+    m_LastClickedID: 25512
+    m_ExpandedIDs: 000000009a630000aa6300006e0b010000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -858,7 +858,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000006970000
+    m_ExpandedIDs: 000000009a630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -883,8 +883,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 06600000
+    m_LastClickedInstanceID: 24582
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000028a300000ca6000012a60000a0b100009461000014770000a4f1030000000000
     m_RenameOverlay:
@@ -910,7 +910,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 149}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -972,7 +972,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 123372
+  m_LastSelectedObjectID: -5576
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
