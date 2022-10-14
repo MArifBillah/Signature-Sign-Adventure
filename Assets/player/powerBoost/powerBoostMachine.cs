@@ -7,6 +7,7 @@ using TMPro;
 public class powerBoostMachine : MonoBehaviour
 {
     [Header("Public Variables")]
+    public GameObject gun;
     public GameObject player;
     public GameObject playerFreeCam;
     public GameObject playerCombatCam;
@@ -28,6 +29,7 @@ public class powerBoostMachine : MonoBehaviour
 
     [Header("Ganti Texture ini")]
     Texture m_MainTexture;
+    public Texture correct;
     public Texture defaultTexture;
     public Texture A;
     public Texture B;
@@ -66,20 +68,26 @@ public class powerBoostMachine : MonoBehaviour
 
     public GameObject changeThisTexture;
     public static bool isInMinigame = false;
-    public GameObject guide;
+    // public GameObject guide;
 
+    [Header("For Hint Panel")]
+    public GameObject hintPanel;
+    public int hint;
+    public bool isHinting;
 
     void OnTriggerEnter(Collider other)
     {
         
         isInMinigame = true;
         answerTime = false;
+        isHinting = false;
         boosterSlider.maxValue = maxProcessTime;
         boosterSlider.value = 0f;
         BoosterProcessTime = 0f;
         if(other.tag == "Player")
         {
-            guide.SetActive(true);
+            // guide.SetActive(true);
+            gun.GetComponent<shootingGun>().enabled = false;
             choice = true;
             answer = KeyCode.None;
             changeTexture();
@@ -112,7 +120,7 @@ public class powerBoostMachine : MonoBehaviour
                 //this will only take answer after the coroutine return the true value for answerTime var
                 //(BoosterProcessTime > maxProcessTime) the final value of BoosterProcesTime is actually slightly bigger than maxProcessTime, this doesn't really shows in the game itself but I have to make the condition using > in order to make it works
             
-                if(answerTime && (BoosterProcessTime > maxProcessTime))
+                if(answerTime && (BoosterProcessTime > maxProcessTime) && !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Tab) &&!isHinting)
                 {
                     if(Input.GetKey(KeyCode.Space)) 
                     {
@@ -125,6 +133,7 @@ public class powerBoostMachine : MonoBehaviour
                         Debug.Log("jawaban benar");
                         //this will spawn the randomized booster item, see the randomItem function
                         Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
+                        changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);
                         triggerBox.GetComponent<BoxCollider>().enabled = false;
                         cancelBooster();
                         choice = false;
@@ -143,6 +152,13 @@ public class powerBoostMachine : MonoBehaviour
                         }
                     }
                 }
+                else if(answerTime && (BoosterProcessTime > maxProcessTime) && Input.GetKey(KeyCode.Tab) && !isHinting && chance >1)
+                {
+                    chance--;
+                    isHinting = true;
+                    StartCoroutine(waitHintCoroutine());
+                    
+                }
             }   
         }
         else if(chance <1)
@@ -150,7 +166,27 @@ public class powerBoostMachine : MonoBehaviour
             Debug.Log("Chance Habis");
             cancelBooster();
         }
+    if(isInMinigame)
+    {
+        showHint();
+    }
+        
 
+    }
+
+    void showHint()
+    {
+        if(!isHinting)
+        {
+            hintPanel.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }else
+        {
+            hintPanel.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void FixedUpdate()
@@ -174,6 +210,16 @@ public class powerBoostMachine : MonoBehaviour
         answerTime = true;
     }
 
+
+    IEnumerator waitHintCoroutine()
+    {
+        // startSlider = true;
+        // print("wait start");
+        yield return new WaitForSecondsRealtime(5);
+        // print("wait over");
+        isHinting = false;
+    }
+
     public void cancelBooster()
     {
         //IF iSInMinigame you can't pause the game
@@ -186,6 +232,7 @@ public class powerBoostMachine : MonoBehaviour
         boosterCam.SetActive(false);
         GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<playerMovement>().enabled = true;
+        gun.GetComponent<shootingGun>().enabled = true;
         // gameObject.GetComponent<powerBoostMachine>().enabled = false;
         
     }

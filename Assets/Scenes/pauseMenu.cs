@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class pauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
+    public GameObject hintPanel;
     public static bool isPause;
+    public static bool isHint;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +27,38 @@ public class pauseMenu : MonoBehaviour
             }
             else
             {
+                closeHintPanel();
                 pauseGame();
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Tab) && !isPause && !powerBoostMachine.isInMinigame)
+        {
+            if(isHint)
+            {
+                closeHintPanel();
+            }
+            else
+            {
+                openHintPanel();
+            }
+        }
+    }
+
+    public void openHintPanel()
+    {
+        hintPanel.SetActive(true);
+        isHint = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void closeHintPanel()
+    {
+        hintPanel.SetActive(false);
+        isHint = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void pauseGame()

@@ -64,6 +64,16 @@ public class playerDatas
             coinStateSave[1].Clear();
             coinStateSave[1].AddRange(coinCollector.coinState[1]);
         }
+        else if(activeScene == "level_3")
+        {
+            coinStateSave[2].Clear();
+            coinStateSave[2].AddRange(coinCollector.coinState[2]);
+        }
+        else if(activeScene == "level_4")
+        {
+            coinStateSave[3].Clear();
+            coinStateSave[3].AddRange(coinCollector.coinState[3]);
+        }
     }
 
 }

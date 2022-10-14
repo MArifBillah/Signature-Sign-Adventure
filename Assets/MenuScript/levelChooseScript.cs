@@ -18,6 +18,7 @@ public class levelChooseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
         if(menuController.level_1)
         {
             level1.SetActive(false);

@@ -20,11 +20,15 @@ public class coinCollector : MonoBehaviour
 
     void Awake()
     {
-        if(coinState.Count < 2)
+        if(coinState.Count < 4)
         {
+            coinState.Clear();
+            coinState.Add(new List<bool>());
+            coinState.Add(new List<bool>());
             coinState.Add(new List<bool>());
             coinState.Add(new List<bool>());
         }
+        
         string activeScene = SceneManager.GetActiveScene().name;
            
         if(activeScene == "level_1")

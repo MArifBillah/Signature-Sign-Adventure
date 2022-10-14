@@ -17,7 +17,7 @@ public class menuController : MonoBehaviour
     public GameObject quitButton;
     public GameObject nextLevelButton;
 
-    public static bool level_1 = true, level_2, level_3, level_4, level_5;
+    public static bool level_1 = true, level_2 = false, level_3 = false, level_4= false, level_5= false;
 
     public void NewGameButton()
     {

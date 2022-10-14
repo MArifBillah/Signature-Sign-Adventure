@@ -26,10 +26,27 @@ public class saveAndLoad : MonoBehaviour
         if(activeScene == "mainMenu")
         {
             isMainMenu = true;
-            menuController.level_1 = PlayerPrefs.GetInt("level_1_completed")==1?true:false;
-            menuController.level_2 = PlayerPrefs.GetInt("level_2_completed")==1?true:false;
-            menuController.level_3 = PlayerPrefs.GetInt("level_3_completed")==1?true:false;
-            menuController.level_4 = PlayerPrefs.GetInt("level_4_completed")==1?true:false;
+            Debug.Log("sebelum di load "+menuController.level_1);
+            if(PlayerPrefs.HasKey("level_1_completed"))
+            {
+                menuController.level_1 = PlayerPrefs.GetInt("level_1_completed")==1?true:false;
+            }
+
+            if(PlayerPrefs.HasKey("level_2_completed"))
+            {
+                menuController.level_2 = PlayerPrefs.GetInt("level_2_completed")==1?true:false;
+            }
+
+            if(PlayerPrefs.HasKey("level_3_completed"))
+            {
+                menuController.level_3 = PlayerPrefs.GetInt("level_3_completed")==1?true:false;
+            }
+
+            if(PlayerPrefs.HasKey("level_4_completed"))
+            {
+                menuController.level_4 = PlayerPrefs.GetInt("level_4_completed")==1?true:false;
+            }
+
         }
         else if(activeScene == "level_1")
         {
@@ -38,6 +55,14 @@ public class saveAndLoad : MonoBehaviour
         else if(activeScene == "level_2")
         {
             whichLevel = 1;
+        }
+        else if(activeScene == "level_3")
+        {
+            whichLevel = 2;
+        }
+        else if(activeScene == "level_4")
+        {
+            whichLevel = 3;
         }
        
     }
