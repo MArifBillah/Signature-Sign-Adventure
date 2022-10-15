@@ -166,6 +166,7 @@ public class powerBoostMachine : MonoBehaviour
             Debug.Log("Chance Habis");
             cancelBooster();
         }
+        
     if(isInMinigame)
     {
         showHint();

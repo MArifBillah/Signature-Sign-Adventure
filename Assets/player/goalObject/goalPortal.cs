@@ -8,12 +8,14 @@ public class goalPortal : MonoBehaviour
 {
     [Header("Public Variables")]
     public GameObject player;
+    public GameObject gun;
     public GameObject playerFreeCam;
     public GameObject playerCombatCam;
     public GameObject boosterCam;
     public GameObject MainCamera;
     public GameObject triggerBox;
     public GameObject playerObject;
+    public GameObject glowPortal;
 
     public int chance;
     bool answer_1;
@@ -30,6 +32,7 @@ public class goalPortal : MonoBehaviour
     public Transform itemSpawnPoint;
     [Header("Ganti Texture ini")]
     Texture m_MainTexture;
+    public Texture correct;
     public Texture defaultTexture;
     public Texture A;
     public Texture B;
@@ -72,15 +75,22 @@ public class goalPortal : MonoBehaviour
     public GameObject changeThisTexture_3;
     GameObject changeTextures;
     
-    // private Animator anim;
+    [Header("For Hint Panel")]
+    public GameObject hintPanel;
+    public int hint;
+    public bool isHinting;
+    public bool isInGoal;
+    
     void OnTriggerEnter(Collider other)
     {
         answer_1 = true;
         answer_2 = false;
         answer_3 = false;
-
+        isInGoal = true;
+        isHinting = false;
         if(other.tag == "Player")
         {
+            gun.GetComponent<shootingGun>().enabled = false;
             //set the maximum value of the slider according to the given value
             goalSlider.maxValue = maxProcessTime;
             //set the intial value to 0 first
@@ -100,6 +110,11 @@ public class goalPortal : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        glowPortal.SetActive(false);
+        isInGoal = false;
+    }
     
     void Update()
     {
@@ -115,7 +130,7 @@ public class goalPortal : MonoBehaviour
                 //need to make interface for the waiting time
                 
                 //this will only take answer after the coroutine return the true value for answerTime var
-                if(answerTime)
+                if(answerTime&& !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Tab) &&!isHinting)
                 {
                     possiblyWrong = true;
                     if(Input.GetKey(KeyCode.Escape))
@@ -126,6 +141,7 @@ public class goalPortal : MonoBehaviour
                     if(Input.GetKey(answer[0]) && answer_1)
                     {
                         Debug.Log("jawaban 1 benar");
+                        changeThisTexture_1.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);;
                         Input.ResetInputAxes();
                         answer_2 = true;
                         answer_1 = false; 
@@ -142,6 +158,7 @@ public class goalPortal : MonoBehaviour
                     {
 
                         Debug.Log("jawaban 2 benar, jawaban berikutnya adalah" + answer[2]);
+                        changeThisTexture_2.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);;
                         Input.ResetInputAxes();
                         possiblyWrong = false;
                         answer_3 = true;
@@ -157,6 +174,7 @@ public class goalPortal : MonoBehaviour
                     if(Input.GetKey(answer[2]) && answer_3)
                     {
                         Debug.Log("Jawaban 3 Benar");
+                        changeThisTexture_3.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);;
                         Input.ResetInputAxes();
                         answer_3 = false;
                         possiblyWrong = false;
@@ -171,9 +189,13 @@ public class goalPortal : MonoBehaviour
                         Debug.Log("chance left = " +chance);
                     }
                 }
-            }
-
-           
+                else if(answerTime && Input.GetKey(KeyCode.Tab) && !isHinting && chance >0)
+                {
+                    chance--;
+                    isHinting = true;
+                    StartCoroutine(waitHintCoroutine());
+                }   
+            }    
         }
         
         if(chance == 0)
@@ -185,6 +207,36 @@ public class goalPortal : MonoBehaviour
         if(playerObject.GetComponent<playerHealth>().playerHP <= 0)
         {
             cancelGoal();
+        }
+
+        if(isInGoal)
+        {
+            showHint();
+        }
+    }
+
+    //hint panel will show up for 5 seconds duration
+    IEnumerator waitHintCoroutine()
+    {
+        // startSlider = true;
+        // print("wait start");
+        yield return new WaitForSecondsRealtime(5);
+        // print("wait over");
+        isHinting = false;
+    }
+
+    void showHint()
+    {
+        if(!isHinting)
+        {
+            hintPanel.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }else
+        {
+            hintPanel.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -384,6 +436,7 @@ public class goalPortal : MonoBehaviour
     
     void spawnGoalPoint()
     {
+        glowPortal.SetActive(true);
         Instantiate(spawnGoal,itemSpawnPoint.position,Quaternion.identity);
         Debug.Log("Goal point spawned");
     }
