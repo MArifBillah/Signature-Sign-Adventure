@@ -8,6 +8,8 @@ public class playerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
+    public AudioSource walkSound;
+    public bool isAudioPlaying;
 
     public float jumpForce;
     public float jumpCoolDown;
@@ -36,6 +38,7 @@ public class playerMovement : MonoBehaviour
     private void Awake()
     {
         anim = GameObject.Find("astroguy_running").GetComponent<Animator>();
+        isAudioPlaying = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -79,7 +82,20 @@ public class playerMovement : MonoBehaviour
         verticallInput = Input.GetAxisRaw("Vertical");       
         if(horizontalInput != 0 || verticallInput != 0){
             anim.SetBool("isRunning",true);
+            if(!isAudioPlaying && grounded)
+            {
+                walkSound.Play();
+                isAudioPlaying =true;
+            }else if(!grounded){
+                walkSound.Stop();
+                isAudioPlaying = false;
+            }
         }else{
+            if(isAudioPlaying)
+            {
+                walkSound.Stop();
+                isAudioPlaying = false;
+            }
             anim.SetBool("isRunning",false);
         }
         if(Input.GetKey(jumpKey) && grounded && readyToJump){
@@ -94,6 +110,7 @@ public class playerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticallInput + orientation.right * horizontalInput;
         if(grounded){
+            
             rb.AddForce(moveDirection.normalized*moveSpeed*10f, ForceMode.Force);
         }
         else if(!grounded)

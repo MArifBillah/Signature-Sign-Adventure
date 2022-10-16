@@ -25,15 +25,17 @@ public class damageHit : MonoBehaviour
         if(other.tag == "enemy")
         {
             other.GetComponent<enemy>().TakeDamage(bulletDamage);
+            GameObject.Find("gun").GetComponent<shootingGun>().destroyBullet();
         }
         else if(other.tag == "Player")
         {
             // Debug.Log("player kena damage");
             other.GetComponent<playerHealth>().PlayerDamage(10);
             GameObject.FindWithTag("enemy").GetComponent<enemy>().destroyEnemyBullet();
+            GameObject.Find("gun").GetComponent<shootingGun>().destroyBullet();
         }
 
-        GameObject.Find("gun").GetComponent<shootingGun>().destroyBullet();
+        
         
        
     }

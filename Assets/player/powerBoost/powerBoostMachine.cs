@@ -7,12 +7,15 @@ using TMPro;
 public class powerBoostMachine : MonoBehaviour
 {
     [Header("Public Variables")]
+    public AudioSource correctSound;
+    public AudioSource wrongSound;
     public GameObject gun;
     public GameObject player;
     public GameObject playerFreeCam;
     public GameObject playerCombatCam;
     public GameObject boosterCam;
     public GameObject triggerBox;
+    public GameObject playerUI;
     public Slider boosterSlider;
     public TextMeshProUGUI howManyChanceAreLeft;
     public Transform teleport;
@@ -86,7 +89,11 @@ public class powerBoostMachine : MonoBehaviour
         BoosterProcessTime = 0f;
         if(other.tag == "Player")
         {
+            player.GetComponent<playerMovement>().walkSound.Stop();
+            player.GetComponent<playerMovement>().isAudioPlaying = false;
+            
             // guide.SetActive(true);
+            playerUI.SetActive(false);
             gun.GetComponent<shootingGun>().enabled = false;
             choice = true;
             answer = KeyCode.None;
@@ -131,6 +138,7 @@ public class powerBoostMachine : MonoBehaviour
                     else if(Input.GetKey(answer))
                     {
                         Debug.Log("jawaban benar");
+                        correctSound.Play();
                         //this will spawn the randomized booster item, see the randomItem function
                         Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
                         changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);
@@ -141,6 +149,7 @@ public class powerBoostMachine : MonoBehaviour
                     else
                     {
                         Debug.Log("Jawaban Salah");
+                        wrongSound.Play();
                         Debug.Log("Kesempatan tinggal "+chance);
                         chance--;
                         Input.ResetInputAxes();
@@ -224,6 +233,7 @@ public class powerBoostMachine : MonoBehaviour
     public void cancelBooster()
     {
         //IF iSInMinigame you can't pause the game
+        playerUI.SetActive(true);
         startSlider = false;
         choice = false;
         isInMinigame = false;

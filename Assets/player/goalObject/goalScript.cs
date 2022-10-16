@@ -11,6 +11,8 @@ public class goalScript : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             string activeScene = SceneManager.GetActiveScene().name;
             endPanel.GetComponent<menuController>().winGame();
             if(activeScene == "level_1")

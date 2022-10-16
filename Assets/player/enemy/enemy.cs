@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class enemy : MonoBehaviour
 {
     public AudioSource enemyShootingSound;
+    public AudioSource exploded;
     public NavMeshAgent agent;
     public Transform player;
     public GameObject projectile; 
@@ -153,6 +154,7 @@ public class enemy : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        exploded.Play();
         GameObject.Find("Player").GetComponent<playerScore>().enemyCount(1);
         Instantiate(dropItem, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);

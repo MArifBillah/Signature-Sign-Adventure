@@ -7,8 +7,11 @@ using TMPro;
 public class goalPortal : MonoBehaviour
 {
     [Header("Public Variables")]
+    public AudioSource correctSound;
+    public AudioSource wrongSound;
     public GameObject player;
     public GameObject gun;
+    public GameObject playerUI;
     public GameObject playerFreeCam;
     public GameObject playerCombatCam;
     public GameObject boosterCam;
@@ -90,6 +93,9 @@ public class goalPortal : MonoBehaviour
         isHinting = false;
         if(other.tag == "Player")
         {
+            player.GetComponent<playerMovement>().walkSound.Stop();
+            player.GetComponent<playerMovement>().isAudioPlaying = false;
+            playerUI.SetActive(false);
             gun.GetComponent<shootingGun>().enabled = false;
             //set the maximum value of the slider according to the given value
             goalSlider.maxValue = maxProcessTime;
@@ -141,6 +147,7 @@ public class goalPortal : MonoBehaviour
                     if(Input.GetKey(answer[0]) && answer_1)
                     {
                         Debug.Log("jawaban 1 benar");
+                        correctSound.Play();
                         changeThisTexture_1.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);;
                         Input.ResetInputAxes();
                         answer_2 = true;
@@ -150,13 +157,14 @@ public class goalPortal : MonoBehaviour
                     else if (!Input.GetKey(answer[0]) && answer_1 && possiblyWrong)
                     {
                         chance--;
+                        wrongSound.Play();
                         Input.ResetInputAxes();
                         Debug.Log("chance left = " +chance);
                     }
                     
                     if(Input.GetKey(answer[1]) && answer_2)
                     {
-
+                        correctSound.Play();
                         Debug.Log("jawaban 2 benar, jawaban berikutnya adalah" + answer[2]);
                         changeThisTexture_2.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);;
                         Input.ResetInputAxes();
@@ -166,6 +174,7 @@ public class goalPortal : MonoBehaviour
                     }
                     else if (!Input.GetKey(answer[1]) && answer_2 && possiblyWrong)
                     {
+                        wrongSound.Play();
                         chance--;
                         Input.ResetInputAxes();
                         Debug.Log("chance left = " +chance);
@@ -174,6 +183,7 @@ public class goalPortal : MonoBehaviour
                     if(Input.GetKey(answer[2]) && answer_3)
                     {
                         Debug.Log("Jawaban 3 Benar");
+                        correctSound.Play();
                         changeThisTexture_3.GetComponent<Renderer>().material.SetTexture("_MainTex", correct);;
                         Input.ResetInputAxes();
                         answer_3 = false;
@@ -184,6 +194,7 @@ public class goalPortal : MonoBehaviour
                     }
                     else if (!Input.GetKey(answer[2]) && answer_3 && possiblyWrong)
                     {
+                        wrongSound.Play();
                         chance--;
                         Input.ResetInputAxes();
                         Debug.Log("chance left = " +chance);
@@ -444,6 +455,11 @@ public class goalPortal : MonoBehaviour
     public void cancelGoal()
     {
         // changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);
+        gun.GetComponent<shootingGun>().enabled = true;
+        playerUI.SetActive(true);
+        startSlider = false;
+        answerTime = false;
+        isInGoal = false;
         choice = false;
         playerFreeCam.SetActive(true);
         boosterCam.SetActive(false);

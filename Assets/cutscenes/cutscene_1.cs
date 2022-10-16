@@ -8,6 +8,7 @@ public class cutscene_1 : MonoBehaviour
     public GameObject player;
     public GameObject playerFreeCam;
     public GameObject playerCombatCam;
+    public GameObject playerUI;
     public GameObject cutsceneCam;
     public GameObject MainCamera;
     public GameObject triggerBox;
@@ -17,6 +18,9 @@ public class cutscene_1 : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            player.GetComponent<playerMovement>().walkSound.Stop();
+            player.GetComponent<playerMovement>().isAudioPlaying = false;
+            playerUI.SetActive(false);
             cutsceneCam.SetActive(true);
             Debug.Log("Process Should start here");  
             playerCombatCam.SetActive(false);
@@ -25,6 +29,7 @@ public class cutscene_1 : MonoBehaviour
             MainCamera.GetComponent<TPmove>().enabled = false;
             GameObject.Find("astroguy_running").GetComponent<Animator>().SetBool("isRunning", false);
             triggerBox.GetComponent<BoxCollider>().enabled = false;
+            
         }
     }
 
@@ -38,6 +43,7 @@ public class cutscene_1 : MonoBehaviour
 
     void closeCutscene()
     {
+        playerUI.SetActive(true);
         cutsceneCam.SetActive(false);
         playerFreeCam.SetActive(true);
         GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = true;
