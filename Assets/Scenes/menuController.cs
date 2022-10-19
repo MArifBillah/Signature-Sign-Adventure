@@ -26,6 +26,11 @@ public class menuController : MonoBehaviour
         // coinCollector.coinState.Clear();
     }
 
+    public void playCutscene()
+    {
+        SceneManager.LoadScene("opening_scene");
+    }
+
     public void LoadGameButton()
     {
         if(PlayerPrefs.HasKey("LevelSaved"))

@@ -70,25 +70,40 @@ public class powerBoostMachine : MonoBehaviour
     Renderer m_Renderer;
 
     public GameObject changeThisTexture;
-    public static bool isInMinigame = false;
+    public static bool isInMinigame;
     // public GameObject guide;
 
     [Header("For Hint Panel")]
     public GameObject hintPanel;
     public int hint;
     public bool isHinting;
+    private bool isActive;
+
+    void Start()
+    {
+        if(!isInMinigame)
+        {
+            isInMinigame = false;
+        }
+
+        isActive = false;
+
+
+    }
 
     void OnTriggerEnter(Collider other)
     {
         
-        isInMinigame = true;
-        answerTime = false;
-        isHinting = false;
-        boosterSlider.maxValue = maxProcessTime;
-        boosterSlider.value = 0f;
-        BoosterProcessTime = 0f;
+
         if(other.tag == "Player")
         {
+            isActive = true;
+            isInMinigame = true;
+            answerTime = false;
+            isHinting = false;
+            boosterSlider.maxValue = maxProcessTime;
+            boosterSlider.value = 0f;
+            BoosterProcessTime = 0f;
             player.GetComponent<playerMovement>().walkSound.Stop();
             player.GetComponent<playerMovement>().isAudioPlaying = false;
             
@@ -175,9 +190,10 @@ public class powerBoostMachine : MonoBehaviour
             Debug.Log("Chance Habis");
             cancelBooster();
         }
-        
-    if(isInMinigame)
+    Debug.Log(isInMinigame);
+    if(isInMinigame && isActive)
     {
+        // Debug.Log(isHinting);
         showHint();
     }
         
@@ -188,11 +204,13 @@ public class powerBoostMachine : MonoBehaviour
     {
         if(!isHinting)
         {
+            Debug.Log("this doesnt work");
             hintPanel.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }else
         {
+            Debug.Log("this work work");
             hintPanel.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -233,6 +251,13 @@ public class powerBoostMachine : MonoBehaviour
     public void cancelBooster()
     {
         //IF iSInMinigame you can't pause the game
+        if(isHinting)
+        {
+            isHinting = false;
+        }
+        Debug.Log("why am i being printed");
+        
+        isActive = false;
         playerUI.SetActive(true);
         startSlider = false;
         choice = false;
