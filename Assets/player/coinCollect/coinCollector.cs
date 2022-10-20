@@ -38,6 +38,12 @@ public class coinCollector : MonoBehaviour
         else if(activeScene == "level_2")
         {
             whichLevel = 1;
+        }else if(activeScene == "level_3")
+        {
+            whichLevel = 2;
+        }else if(activeScene == "level_4")
+        {
+            whichLevel = 3;
         }
 
         // Debug.Log("coinCollector is first");

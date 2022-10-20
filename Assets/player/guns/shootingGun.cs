@@ -138,9 +138,13 @@ public class shootingGun : MonoBehaviour
 
     public void attackSpeedUpgrade(float subsDelay)
     {
-        timeBetweenShooting -= subsDelay;
-        shootDelaySlider.maxValue = timeBetweenShooting;
-        delayTime = timeBetweenShooting/(timeBetweenShooting/0.02f);
+        if(timeBetweenShooting >= 0.1f)
+        {
+            timeBetweenShooting -= subsDelay;
+            shootDelaySlider.maxValue = timeBetweenShooting;
+            delayTime = timeBetweenShooting/(timeBetweenShooting/0.02f);
+        }
+
     }
 
 }

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class accSelector : MonoBehaviour
 {
 
     // public GameObject lock_item1;
+    public AudioSource notEnough;
     public GameObject lock_item2;
     public GameObject lock_item3;
     public GameObject lock_item4;
@@ -41,9 +43,13 @@ public class accSelector : MonoBehaviour
 
     
     
-
     void Start()
     {
+        checkingTheItems();
+    }
+    public void checkingTheItems()
+    {
+        
         
         item1 = PlayerPrefs.GetInt("Item1")==1?true:false;
         item2 = PlayerPrefs.GetInt("Item2")==1?true:false;
@@ -52,6 +58,8 @@ public class accSelector : MonoBehaviour
         item5 = PlayerPrefs.GetInt("Item5")==1?true:false;
         item6 = PlayerPrefs.GetInt("Item6")==1?true:false;
         item7 = PlayerPrefs.GetInt("Item7")==1?true:false;
+        
+
         changeItem();
         if(PlayerPrefs.HasKey("unlockItem1"))
         {
@@ -115,7 +123,11 @@ public class accSelector : MonoBehaviour
             unlockItem7 = false;
         }
 
-        deleteLock(); 
+        string activeScene = SceneManager.GetActiveScene().name;
+        if(activeScene =="mainMenu")
+        {
+            deleteLock();
+        }
         // unlockItem2 = PlayerPrefs.GetInt("unlockItem2")==1?true:false;
         // unlockItem3 = PlayerPrefs.GetInt("unlockItem3")==1?true:false;
         // unlockItem4 = PlayerPrefs.GetInt("unlockItem4")==1?true:false;
@@ -126,39 +138,64 @@ public class accSelector : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log(unlockItem1);
+        // Debug.Log(unlockItem2);
     }
 
     public void deleteLock()
     {
+        Debug.Log("this shouldnt be accessed"); 
         if(unlockItem2)
         {
             lock_item2.SetActive(false);
+        }
+        else if(!unlockItem2)
+        {
+            lock_item2.SetActive(true);
         }
 
         if(unlockItem3)
         {
             lock_item3.SetActive(false);
         }
+        else if(!unlockItem3)
+        {
+            lock_item3.SetActive(true);
+        }
 
         if(unlockItem4)
         {
             lock_item4.SetActive(false);
+        }
+        else if(!unlockItem4)
+        {
+            lock_item4.SetActive(true);
         }
 
         if(unlockItem5)
         {
             lock_item5.SetActive(false);
         }
+        else if(!unlockItem5)
+        {
+            lock_item5.SetActive(true);
+        }
 
         if(unlockItem6)
         {
             lock_item6.SetActive(false);
         }
+        else if(!unlockItem6)
+        {
+            lock_item6.SetActive(true);
+        }
 
         if(unlockItem7)
         {
             lock_item7.SetActive(false);
+        }
+        else if(!unlockItem7)
+        {
+            lock_item7.SetActive(true);
         }
     }
 
@@ -186,10 +223,18 @@ public class accSelector : MonoBehaviour
     public void changeItem()
     {
         resetItem();
-        deleteLock();
+
+        string activeScene = SceneManager.GetActiveScene().name;
+        if(activeScene =="mainMenu")
+        {
+            deleteLock();
+        }
         if(item1)
         {
-            item_1.SetActive(true);
+            if(!item_1.activeSelf)
+            {
+                item_1.SetActive(true);
+            }
         }
 
         if(item2)
@@ -253,9 +298,9 @@ public class accSelector : MonoBehaviour
             item2 = true;
             changeItem();
         }
-        else if(!unlockItem2 && PlayerPrefs.GetInt("currencyStored") >= 3)
+        else if(!unlockItem2 && PlayerPrefs.GetInt("currencyStored") >= 20)
         {
-            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3;
+            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 20;
             PlayerPrefs.SetInt("currencyStored", subsCoins);
             unlockItem2 =true;
             PlayerPrefs.SetInt("unlockItem2",unlockItem2?1:0);
@@ -265,6 +310,7 @@ public class accSelector : MonoBehaviour
         }
         else
         {
+            notEnough.Play();
             Debug.Log("Uangnya tidak cukup bos!");
         }
     }
@@ -278,9 +324,9 @@ public class accSelector : MonoBehaviour
             item3 = true;
             changeItem();
         }
-        else if(!unlockItem3 && PlayerPrefs.GetInt("currencyStored") >= 3)
+        else if(!unlockItem3 && PlayerPrefs.GetInt("currencyStored") >= 50)
         {
-            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3;
+            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 50;
             PlayerPrefs.SetInt("currencyStored", subsCoins);
             unlockItem3 =true;
             PlayerPrefs.SetInt("unlockItem3",unlockItem3?1:0);
@@ -290,6 +336,7 @@ public class accSelector : MonoBehaviour
         }
         else
         {
+            notEnough.Play();
             Debug.Log("Uangnya tidak cukup bos!");
         }
     }
@@ -303,9 +350,9 @@ public class accSelector : MonoBehaviour
             item4 = true;
             changeItem();
         }
-        else if(!unlockItem4 && PlayerPrefs.GetInt("currencyStored") >= 3)
+        else if(!unlockItem4 && PlayerPrefs.GetInt("currencyStored") >= 150)
         {
-            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3;
+            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 150;
             PlayerPrefs.SetInt("currencyStored", subsCoins);
             unlockItem4 =true;
             PlayerPrefs.SetInt("unlockItem4",unlockItem4?1:0);
@@ -315,6 +362,7 @@ public class accSelector : MonoBehaviour
         }
         else
         {
+            notEnough.Play();
             Debug.Log("Uangnya tidak cukup bos!");
         }
     }
@@ -328,9 +376,9 @@ public class accSelector : MonoBehaviour
             item5 = true;
             changeItem();
         }
-        else if(!unlockItem5 && PlayerPrefs.GetInt("currencyStored") >= 3)
+        else if(!unlockItem5 && PlayerPrefs.GetInt("currencyStored") >= 250)
         {
-            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3;
+            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 250;
             PlayerPrefs.SetInt("currencyStored", subsCoins);
             unlockItem5 =true;
             PlayerPrefs.SetInt("unlockItem5",unlockItem5?1:0);
@@ -340,6 +388,7 @@ public class accSelector : MonoBehaviour
         }
         else
         {
+            notEnough.Play();
             Debug.Log("Uangnya tidak cukup bos!");
         }
     }
@@ -353,9 +402,9 @@ public class accSelector : MonoBehaviour
             item6 = true;
             changeItem();
         }
-        else if(!unlockItem6 && PlayerPrefs.GetInt("currencyStored") >= 3)
+        else if(!unlockItem6 && PlayerPrefs.GetInt("currencyStored") >= 400)
         {
-            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3;
+            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 400;
             PlayerPrefs.SetInt("currencyStored", subsCoins);
             unlockItem6 =true;
             PlayerPrefs.SetInt("unlockItem6",unlockItem6?1:0);
@@ -365,6 +414,7 @@ public class accSelector : MonoBehaviour
         }
         else
         {
+            notEnough.Play();
             Debug.Log("Uangnya tidak cukup bos!");
         }
     }
@@ -378,9 +428,9 @@ public class accSelector : MonoBehaviour
             item7 = true;
             changeItem();
         }
-        else if(!unlockItem7 && PlayerPrefs.GetInt("currencyStored") >= 3)
+        else if(!unlockItem7 && PlayerPrefs.GetInt("currencyStored") >= 3000)
         {
-            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3;
+            int subsCoins = PlayerPrefs.GetInt("currencyStored") - 3000;
             PlayerPrefs.SetInt("currencyStored", subsCoins);
             unlockItem7 =true;
             PlayerPrefs.SetInt("unlockItem7",unlockItem7?1:0);
@@ -390,6 +440,7 @@ public class accSelector : MonoBehaviour
         }
         else
         {
+            notEnough.Play();
             Debug.Log("Uangnya tidak cukup bos!");
         }
     }

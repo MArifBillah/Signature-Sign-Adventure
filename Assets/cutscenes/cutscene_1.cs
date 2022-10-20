@@ -13,11 +13,18 @@ public class cutscene_1 : MonoBehaviour
     public GameObject MainCamera;
     public GameObject triggerBox;
     public GameObject playerObject;
+    public bool isActive;
+    
+    void Start()
+    {
+        isActive = false;
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
-        {
+        {   
+            isActive = true;
             player.GetComponent<playerMovement>().walkSound.Stop();
             player.GetComponent<playerMovement>().isAudioPlaying = false;
             playerUI.SetActive(false);
@@ -28,25 +35,29 @@ public class cutscene_1 : MonoBehaviour
             player.GetComponent<playerMovement>().enabled = false;
             MainCamera.GetComponent<TPmove>().enabled = false;
             GameObject.Find("astroguy_running").GetComponent<Animator>().SetBool("isRunning", false);
-            triggerBox.GetComponent<BoxCollider>().enabled = false;
             
-        }
-    }
-
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.Return))
-        {
-            closeCutscene();
+            
         }
     }
 
     void closeCutscene()
     {
+        isActive = false;
         playerUI.SetActive(true);
         cutsceneCam.SetActive(false);
         playerFreeCam.SetActive(true);
         GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = true;
-        GameObject.FindWithTag("Player").GetComponent<playerMovement>().enabled = true;
+        player.GetComponent<playerMovement>().enabled = true;
+        triggerBox.GetComponent<BoxCollider>().enabled = false;
     }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Return) && isActive)
+        {
+            closeCutscene();
+        }
+    }
+
+
 }

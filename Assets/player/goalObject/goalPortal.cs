@@ -86,13 +86,15 @@ public class goalPortal : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        answer_1 = true;
-        answer_2 = false;
-        answer_3 = false;
-        isInGoal = true;
-        isHinting = false;
+        
         if(other.tag == "Player")
         {
+            answer_1 = true;
+            answer_2 = false;
+            answer_3 = false;
+            isInGoal = true;
+            isHinting = false;
+            answerTime = false;
             player.GetComponent<playerMovement>().walkSound.Stop();
             player.GetComponent<playerMovement>().isAudioPlaying = false;
             playerUI.SetActive(false);
@@ -141,6 +143,7 @@ public class goalPortal : MonoBehaviour
                     possiblyWrong = true;
                     if(Input.GetKey(KeyCode.Escape))
                     {
+                        cancelGoal();
                         Debug.Log("You Can't close this one");
                     }
                     
@@ -454,6 +457,7 @@ public class goalPortal : MonoBehaviour
 
     public void cancelGoal()
     {
+        answer.Clear();
         // changeThisTexture.GetComponent<Renderer>().material.SetTexture("_MainTex", defaultTexture);
         gun.GetComponent<shootingGun>().enabled = true;
         playerUI.SetActive(true);

@@ -91,6 +91,7 @@ public class powerBoostMachine : MonoBehaviour
 
     }
 
+
     void OnTriggerEnter(Collider other)
     {
         
@@ -129,6 +130,11 @@ public class powerBoostMachine : MonoBehaviour
 
     private void Update()
     {
+        if(isInMinigame && isActive)
+        {
+            m_Renderer.material.SetTexture("_MainTex", m_MainTexture);
+        }
+
         howManyChanceAreLeft.text =chance.ToString();   
         if(choice && chance>0)
         {     
@@ -267,7 +273,7 @@ public class powerBoostMachine : MonoBehaviour
         playerFreeCam.SetActive(true);
         boosterCam.SetActive(false);
         GameObject.Find("Main Camera").GetComponent<TPmove>().enabled = true;
-        GameObject.FindWithTag("Player").GetComponent<playerMovement>().enabled = true;
+        player.GetComponent<playerMovement>().enabled = true;
         gun.GetComponent<shootingGun>().enabled = true;
         // gameObject.GetComponent<powerBoostMachine>().enabled = false;
         
@@ -277,149 +283,176 @@ public class powerBoostMachine : MonoBehaviour
     public void changeTexture()
     {
         // // Debug.Log("texture changed");
-        
-        randomNumber = Random.Range(1, 26);
+        randomNumber = 0;
+        randomNumber = Random.Range(1, 27);
         //Fetch the Renderer from the GameObject
         m_Renderer = changeThisTexture.GetComponent<Renderer> ();
-        // Debug.Log("nomor randomnya adalah ="+randomNumber);
+        Debug.Log("nomor randomnya adalah ="+randomNumber);
         switch (randomNumber)
         {
             case 1:
                 m_MainTexture = A;
                 answer = KeyCode.A;
-                // Debug.Log("texture changed to A");
+                m_Renderer.material.SetTexture("_MainTex", A);
+                Debug.Log("texture changed to A");
                 break;
             case 2:
                 m_MainTexture = B;
                 answer = KeyCode.B;
-                // Debug.Log("texture changed to B");
+                m_Renderer.material.SetTexture("_MainTex", B);
+                Debug.Log("texture changed to B");
                 break;
             case 3:
                 m_MainTexture = C;
                 answer = KeyCode.C;
-                // Debug.Log("texture changed to C");
+                m_Renderer.material.SetTexture("_MainTex", C);
+                Debug.Log("texture changed to C");
                 break;
             case 4:
                 m_MainTexture = D;
                 answer = KeyCode.D;
-                // Debug.Log("texture changed to D");
+                m_Renderer.material.SetTexture("_MainTex", D);
+                Debug.Log("texture changed to D");
                 break;
             case 5:
                 m_MainTexture = E;
                 answer = KeyCode.E;
-                // Debug.Log("texture changed to E");
+                m_Renderer.material.SetTexture("_MainTex", E);
+                Debug.Log("texture changed to E");
                 break;
             case 6:
                 m_MainTexture = F;
                 answer = KeyCode.F;
-                // Debug.Log("texture changed to F");
+                m_Renderer.material.SetTexture("_MainTex", F);
+                Debug.Log("texture changed to F");
                 break;
             case 7:
                 m_MainTexture = G;
                 answer = KeyCode.G;
-                // Debug.Log("texture changed to G");
+                m_Renderer.material.SetTexture("_MainTex", G);
+                Debug.Log("texture changed to G");
                 break;
             case 8:
                 m_MainTexture = H;
                 answer = KeyCode.H;
-                // Debug.Log("texture changed to H");
+                m_Renderer.material.SetTexture("_MainTex", H);
+                Debug.Log("texture changed to H");
                 break;
             case 9:
                 m_MainTexture = I;
                 answer = KeyCode.I;
-                // Debug.Log("texture changed to I");
+                m_Renderer.material.SetTexture("_MainTex", I);
+                Debug.Log("texture changed to I");
                 break;
             case 10:
                 m_MainTexture = J;
                 answer = KeyCode.J;
-                // Debug.Log("texture changed to J");
+                m_Renderer.material.SetTexture("_MainTex", J);
+                Debug.Log("texture changed to J");
                 break;
             case 11:
                 m_MainTexture = K;
                 answer = KeyCode.K;
-                // Debug.Log("texture changed to K");
+                m_Renderer.material.SetTexture("_MainTex", K);
+                Debug.Log("texture changed to K");
                 break;
             case 12:
                 m_MainTexture = L;
                 answer = KeyCode.L;
-                // Debug.Log("texture changed to L");
+                m_Renderer.material.SetTexture("_MainTex", L);
+                Debug.Log("texture changed to L");
                 break;
             case 13:
                 m_MainTexture = M;
                 answer = KeyCode.M;
-                // Debug.Log("texture changed to M");
+                m_Renderer.material.SetTexture("_MainTex", M);
+                Debug.Log("texture changed to M");
                 break;
             case 14:
                 m_MainTexture = N;
                 answer = KeyCode.N;
-                // Debug.Log("texture changed to N");
+                m_Renderer.material.SetTexture("_MainTex", N);
+                Debug.Log("texture changed to N");
                 break;
             case 15:
                 m_MainTexture = O;
                 answer = KeyCode.O;
-                // Debug.Log("texture changed to O");
+                m_Renderer.material.SetTexture("_MainTex", O);
+                Debug.Log("texture changed to O");
                 break;
             case 16:
                 m_MainTexture = P;
                 answer = KeyCode.P;
-                // Debug.Log("texture changed to P");
+                m_Renderer.material.SetTexture("_MainTex", P);
+                Debug.Log("texture changed to P");
                 break;
             case 17:
                 m_MainTexture = Q;
                 answer = KeyCode.Q;
-                // Debug.Log("texture changed to Q");
+                m_Renderer.material.SetTexture("_MainTex", Q);
+                Debug.Log("texture changed to Q");
                 break;
             case 18:
                 m_MainTexture = R;
                 answer = KeyCode.R;
-                // Debug.Log("texture changed to R");
+                m_Renderer.material.SetTexture("_MainTex", R);
+                Debug.Log("texture changed to R");
                 break;
             case 19:
                 m_MainTexture = S;
                 answer = KeyCode.S;
-                // Debug.Log("texture changed to S");
+                m_Renderer.material.SetTexture("_MainTex", S);
+                Debug.Log("texture changed to S");
                 break;
             case 20:
                 m_MainTexture = T;
                 answer = KeyCode.T;
-                // Debug.Log("texture changed to T");
+                m_Renderer.material.SetTexture("_MainTex", T);
+                Debug.Log("texture changed to T");
                 break;
             case 21:
                 m_MainTexture = U;
                 answer = KeyCode.U;
-                // Debug.Log("texture changed to U");
+                m_Renderer.material.SetTexture("_MainTex", U);
+                Debug.Log("texture changed to U");
                 break;
             case 22:
                 m_MainTexture = V;
                 answer = KeyCode.V;
-                // Debug.Log("texture changed to V");
+                m_Renderer.material.SetTexture("_MainTex", V);
+                Debug.Log("texture changed to V");
                 break;
             case 23:
                 m_MainTexture = W;
                 answer = KeyCode.W;
-                // Debug.Log("texture changed to W");
+                m_Renderer.material.SetTexture("_MainTex", W);
+                Debug.Log("texture changed to W");
                 break;
             case 24:
                 m_MainTexture = X;
                 answer = KeyCode.X;
-                // Debug.Log("texture changed to X");
+                m_Renderer.material.SetTexture("_MainTex", X);
+                Debug.Log("texture changed to X");
                 break;
             case 25:
                 m_MainTexture = Y;
                 answer = KeyCode.Y;
-                // Debug.Log("texture changed to Y");
+                m_Renderer.material.SetTexture("_MainTex", Y);
+                Debug.Log("texture changed to Y");
                 break;
             case 26:
-                m_MainTexture = Z;
+                
                 answer = KeyCode.Z;
-                // Debug.Log("texture changed to Z");
+                Debug.Log("texture changed to Z");
+                m_Renderer.material.SetTexture("_MainTex", Z);
                 break;
             default:
-                // Debug.Log("Seharusnya ini gak di print");
+                Debug.Log("Seharusnya ini gak di print");
                 break;
         }
         //Set the Texture you assign in the Inspector as the main texture (Or Albedo)
         m_Renderer.material.SetTexture("_MainTex", m_MainTexture);
+        
     }
 
     private void randomBoosterItem()

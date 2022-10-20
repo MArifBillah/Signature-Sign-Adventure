@@ -5,7 +5,7 @@ using UnityEngine;
 public class movingPlatform : MonoBehaviour
 {
     public GameObject Player;
-    private bool isOnPlatform = false;
+    private bool isOnPlatform;
 
     void Update()
     {
@@ -31,6 +31,7 @@ public class movingPlatform : MonoBehaviour
         {
             Player.GetComponent<playerMovement>().moveSpeed = 7;
             Player.transform.parent = null;
+            isOnPlatform = false;
         }        
     }
 }

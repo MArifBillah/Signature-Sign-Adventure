@@ -9,16 +9,15 @@ public class levelChooseScript : MonoBehaviour
     public GameObject level3;
     public GameObject level4;
     public GameObject level5;
+    public bool startWait;
     // Start is called before the first frame update
     void Start()
     {
-
+        startWait = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    void check()
     {
-    
+        // Debug.Log("Hello script is starting"+ menuController.level_1);
         if(menuController.level_1)
         {
             level1.SetActive(false);
@@ -62,6 +61,27 @@ public class levelChooseScript : MonoBehaviour
         else if(!menuController.level_5)
         {
             level5.SetActive(true);
-        }       
+        }  
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+    // Debug.Log("Hello script is starting"+ menuController.level_1);
+    if(startWait)
+    {
+        check();
+        StartCoroutine(waitCoroutine());
+        startWait = false;
+    }
+
+     
+    }
+
+    IEnumerator waitCoroutine()
+    {
+        
+        yield return new WaitForSecondsRealtime(5);
+        startWait = false;
     }
 }

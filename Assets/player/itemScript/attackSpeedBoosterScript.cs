@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class attackSpeedBoosterScript : MonoBehaviour
 {
-    float subsDelay = 0.1f;
+    float subsDelay = 0.3f;
     public AudioSource upgrade;
     
     void OnTriggerEnter(Collider other)

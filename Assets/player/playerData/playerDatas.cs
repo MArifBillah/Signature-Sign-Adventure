@@ -46,13 +46,18 @@ public class playerDatas
         position[1] = player.transform.position.y+2;
         position[2] = player.transform.position.z+2;
 
-        if(coinStateSave.Count < 2)
+        if(coinStateSave.Count < 4)
         {
+            coinStateSave.Clear();
+            coinStateSave.Add(new List<bool>());
+            coinStateSave.Add(new List<bool>());
             coinStateSave.Add(new List<bool>());
             coinStateSave.Add(new List<bool>());
         }
         
+        Debug.Log("hello ini playerdata");
         string activeScene = SceneManager.GetActiveScene().name;
+        Debug.Log("ini adalah level "+activeScene);
         if(activeScene == "level_1")
         {
             coinStateSave[0].Clear();
@@ -61,12 +66,15 @@ public class playerDatas
         }
         else if(activeScene == "level_2")
         {
+            Debug.Log("saved level 2");
             coinStateSave[1].Clear();
             coinStateSave[1].AddRange(coinCollector.coinState[1]);
         }
         else if(activeScene == "level_3")
         {
+            Debug.Log("saved level 3");
             coinStateSave[2].Clear();
+            // Debug.Log("heglo ini "+coinCollector.coinState[2].Count);
             coinStateSave[2].AddRange(coinCollector.coinState[2]);
         }
         else if(activeScene == "level_4")
