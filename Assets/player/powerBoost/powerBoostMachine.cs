@@ -152,7 +152,7 @@ public class powerBoostMachine : MonoBehaviour
                     }
                     else if(Input.GetKey(answer))
                     {
-                        Debug.Log("jawaban benar");
+                        // Debug.Log("jawaban benar");
                         correctSound.Play();
                         //this will spawn the randomized booster item, see the randomItem function
                         Instantiate(spawnThisItem,itemSpawnPoint.position,Quaternion.identity);
@@ -163,14 +163,14 @@ public class powerBoostMachine : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Jawaban Salah");
+                        // Debug.Log("Jawaban Salah");
                         wrongSound.Play();
-                        Debug.Log("Kesempatan tinggal "+chance);
+                        // Debug.Log("Kesempatan tinggal "+chance);
                         chance--;
                         Input.ResetInputAxes();
                         if(chance == 0)
                         {
-                            Debug.Log("Kesempatan Habis");
+                            // Debug.Log("Kesempatan Habis");
                             choice = false;
                             cancelBooster();
                         }
@@ -187,13 +187,13 @@ public class powerBoostMachine : MonoBehaviour
         }
         else if(chance <1)
         {
-            Debug.Log("Chance Habis");
+            // Debug.Log("Chance Habis");
             cancelBooster();
         }
-    Debug.Log(isInMinigame);
+    // Debug.Log(isInMinigame);
     if(isInMinigame && isActive)
     {
-        // Debug.Log(isHinting);
+        // // Debug.Log(isHinting);
         showHint();
     }
         
@@ -204,13 +204,13 @@ public class powerBoostMachine : MonoBehaviour
     {
         if(!isHinting)
         {
-            Debug.Log("this doesnt work");
+            // Debug.Log("this doesnt work");
             hintPanel.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }else
         {
-            Debug.Log("this work work");
+            // Debug.Log("this work work");
             hintPanel.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -255,7 +255,7 @@ public class powerBoostMachine : MonoBehaviour
         {
             isHinting = false;
         }
-        Debug.Log("why am i being printed");
+        // Debug.Log("why am i being printed");
         
         isActive = false;
         playerUI.SetActive(true);
@@ -276,146 +276,146 @@ public class powerBoostMachine : MonoBehaviour
 
     public void changeTexture()
     {
-        Debug.Log("texture changed");
+        // // Debug.Log("texture changed");
         
         randomNumber = Random.Range(1, 26);
         //Fetch the Renderer from the GameObject
         m_Renderer = changeThisTexture.GetComponent<Renderer> ();
-        Debug.Log("nomor randomnya adalah ="+randomNumber);
+        // Debug.Log("nomor randomnya adalah ="+randomNumber);
         switch (randomNumber)
         {
             case 1:
                 m_MainTexture = A;
                 answer = KeyCode.A;
-                Debug.Log("texture changed to A");
+                // Debug.Log("texture changed to A");
                 break;
             case 2:
                 m_MainTexture = B;
                 answer = KeyCode.B;
-                Debug.Log("texture changed to B");
+                // Debug.Log("texture changed to B");
                 break;
             case 3:
                 m_MainTexture = C;
                 answer = KeyCode.C;
-                Debug.Log("texture changed to C");
+                // Debug.Log("texture changed to C");
                 break;
             case 4:
                 m_MainTexture = D;
                 answer = KeyCode.D;
-                Debug.Log("texture changed to D");
+                // Debug.Log("texture changed to D");
                 break;
             case 5:
                 m_MainTexture = E;
                 answer = KeyCode.E;
-                Debug.Log("texture changed to E");
+                // Debug.Log("texture changed to E");
                 break;
             case 6:
                 m_MainTexture = F;
                 answer = KeyCode.F;
-                Debug.Log("texture changed to F");
+                // Debug.Log("texture changed to F");
                 break;
             case 7:
                 m_MainTexture = G;
                 answer = KeyCode.G;
-                Debug.Log("texture changed to G");
+                // Debug.Log("texture changed to G");
                 break;
             case 8:
                 m_MainTexture = H;
                 answer = KeyCode.H;
-                Debug.Log("texture changed to H");
+                // Debug.Log("texture changed to H");
                 break;
             case 9:
                 m_MainTexture = I;
                 answer = KeyCode.I;
-                Debug.Log("texture changed to I");
+                // Debug.Log("texture changed to I");
                 break;
             case 10:
                 m_MainTexture = J;
                 answer = KeyCode.J;
-                Debug.Log("texture changed to J");
+                // Debug.Log("texture changed to J");
                 break;
             case 11:
                 m_MainTexture = K;
                 answer = KeyCode.K;
-                Debug.Log("texture changed to K");
+                // Debug.Log("texture changed to K");
                 break;
             case 12:
                 m_MainTexture = L;
                 answer = KeyCode.L;
-                Debug.Log("texture changed to L");
+                // Debug.Log("texture changed to L");
                 break;
             case 13:
                 m_MainTexture = M;
                 answer = KeyCode.M;
-                Debug.Log("texture changed to M");
+                // Debug.Log("texture changed to M");
                 break;
             case 14:
                 m_MainTexture = N;
                 answer = KeyCode.N;
-                Debug.Log("texture changed to N");
+                // Debug.Log("texture changed to N");
                 break;
             case 15:
                 m_MainTexture = O;
                 answer = KeyCode.O;
-                Debug.Log("texture changed to O");
+                // Debug.Log("texture changed to O");
                 break;
             case 16:
                 m_MainTexture = P;
                 answer = KeyCode.P;
-                Debug.Log("texture changed to P");
+                // Debug.Log("texture changed to P");
                 break;
             case 17:
                 m_MainTexture = Q;
                 answer = KeyCode.Q;
-                Debug.Log("texture changed to Q");
+                // Debug.Log("texture changed to Q");
                 break;
             case 18:
                 m_MainTexture = R;
                 answer = KeyCode.R;
-                Debug.Log("texture changed to R");
+                // Debug.Log("texture changed to R");
                 break;
             case 19:
                 m_MainTexture = S;
                 answer = KeyCode.S;
-                Debug.Log("texture changed to S");
+                // Debug.Log("texture changed to S");
                 break;
             case 20:
                 m_MainTexture = T;
                 answer = KeyCode.T;
-                Debug.Log("texture changed to T");
+                // Debug.Log("texture changed to T");
                 break;
             case 21:
                 m_MainTexture = U;
                 answer = KeyCode.U;
-                Debug.Log("texture changed to U");
+                // Debug.Log("texture changed to U");
                 break;
             case 22:
                 m_MainTexture = V;
                 answer = KeyCode.V;
-                Debug.Log("texture changed to V");
+                // Debug.Log("texture changed to V");
                 break;
             case 23:
                 m_MainTexture = W;
                 answer = KeyCode.W;
-                Debug.Log("texture changed to W");
+                // Debug.Log("texture changed to W");
                 break;
             case 24:
                 m_MainTexture = X;
                 answer = KeyCode.X;
-                Debug.Log("texture changed to X");
+                // Debug.Log("texture changed to X");
                 break;
             case 25:
                 m_MainTexture = Y;
                 answer = KeyCode.Y;
-                Debug.Log("texture changed to Y");
+                // Debug.Log("texture changed to Y");
                 break;
             case 26:
                 m_MainTexture = Z;
                 answer = KeyCode.Z;
-                Debug.Log("texture changed to Z");
+                // Debug.Log("texture changed to Z");
                 break;
             default:
-                Debug.Log("Seharusnya ini gak di print");
+                // Debug.Log("Seharusnya ini gak di print");
                 break;
         }
         //Set the Texture you assign in the Inspector as the main texture (Or Albedo)
@@ -424,7 +424,7 @@ public class powerBoostMachine : MonoBehaviour
 
     private void randomBoosterItem()
     {
-        Debug.Log("Item randomized");
+        // Debug.Log("Item randomized");
         itemRandom = Random.Range(1, 4);
         switch(itemRandom)
         {
@@ -438,7 +438,7 @@ public class powerBoostMachine : MonoBehaviour
                 spawnThisItem = shieldBooster;
                 break;
             default:
-                Debug.Log("Jangan diprint");
+                // Debug.Log("Jangan diprint");
                 break;
         }
     }

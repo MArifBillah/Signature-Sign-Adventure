@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class accSelector : MonoBehaviour
 {
+
+    // public GameObject lock_item1;
+    public GameObject lock_item2;
+    public GameObject lock_item3;
+    public GameObject lock_item4;
+    public GameObject lock_item5;
+    public GameObject lock_item6;
+    public GameObject lock_item7;
+
     public GameObject item_1;
     public GameObject item_2;
     public GameObject item_3;
@@ -44,18 +53,113 @@ public class accSelector : MonoBehaviour
         item6 = PlayerPrefs.GetInt("Item6")==1?true:false;
         item7 = PlayerPrefs.GetInt("Item7")==1?true:false;
         changeItem();
-        unlockItem1 = PlayerPrefs.GetInt("unlockItem1")==1?true:false;
-        unlockItem2 = PlayerPrefs.GetInt("unlockItem2")==1?true:false;
-        unlockItem3 = PlayerPrefs.GetInt("unlockItem3")==1?true:false;
-        unlockItem4 = PlayerPrefs.GetInt("unlockItem4")==1?true:false;
-        unlockItem5 = PlayerPrefs.GetInt("unlockItem5")==1?true:false;
-        unlockItem6 = PlayerPrefs.GetInt("unlockItem6")==1?true:false;
-        unlockItem7 = PlayerPrefs.GetInt("unlockItem7")==1?true:false;
+        if(PlayerPrefs.HasKey("unlockItem1"))
+        {
+            unlockItem1 = PlayerPrefs.GetInt("unlockItem1")==1?true:false;
+        }else
+        {
+            unlockItem1 = false;
+        }
+        
+        if(PlayerPrefs.HasKey("unlockItem2"))
+        {
+            unlockItem2 = PlayerPrefs.GetInt("unlockItem2")==1?true:false;
+        }
+        else
+        {
+            unlockItem2 = false;
+        }
+
+        if(PlayerPrefs.HasKey("unlockItem3"))
+        {
+            unlockItem3 = PlayerPrefs.GetInt("unlockItem3")==1?true:false;
+        }
+        else
+        {
+            unlockItem3 = false;
+        }
+
+        if(PlayerPrefs.HasKey("unlockItem4"))
+        {
+            unlockItem4 = PlayerPrefs.GetInt("unlockItem4")==1?true:false;
+        }
+        else
+        {
+            unlockItem4 = false;
+        }
+
+        if(PlayerPrefs.HasKey("unlockItem5"))
+        {
+            unlockItem5 = PlayerPrefs.GetInt("unlockItem5")==1?true:false;
+        }
+        else
+        {
+            unlockItem5 = false;
+        }
+        
+        if(PlayerPrefs.HasKey("unlockItem6"))
+        {
+            unlockItem6 = PlayerPrefs.GetInt("unlockItem6")==1?true:false;
+        }
+        else
+        {
+            unlockItem6 = false;
+        }
+
+        if(PlayerPrefs.HasKey("unlockItem7"))
+        {
+            unlockItem7 = PlayerPrefs.GetInt("unlockItem7")==1?true:false;
+        }
+        else
+        {
+            unlockItem7 = false;
+        }
+
+        deleteLock(); 
+        // unlockItem2 = PlayerPrefs.GetInt("unlockItem2")==1?true:false;
+        // unlockItem3 = PlayerPrefs.GetInt("unlockItem3")==1?true:false;
+        // unlockItem4 = PlayerPrefs.GetInt("unlockItem4")==1?true:false;
+        // unlockItem5 = PlayerPrefs.GetInt("unlockItem5")==1?true:false;
+        // unlockItem6 = PlayerPrefs.GetInt("unlockItem6")==1?true:false;
+        // unlockItem7 = PlayerPrefs.GetInt("unlockItem7")==1?true:false;
     }
 
     void Update()
     {
         // Debug.Log(unlockItem1);
+    }
+
+    public void deleteLock()
+    {
+        if(unlockItem2)
+        {
+            lock_item2.SetActive(false);
+        }
+
+        if(unlockItem3)
+        {
+            lock_item3.SetActive(false);
+        }
+
+        if(unlockItem4)
+        {
+            lock_item4.SetActive(false);
+        }
+
+        if(unlockItem5)
+        {
+            lock_item5.SetActive(false);
+        }
+
+        if(unlockItem6)
+        {
+            lock_item6.SetActive(false);
+        }
+
+        if(unlockItem7)
+        {
+            lock_item7.SetActive(false);
+        }
     }
 
     public void resetItem()
@@ -82,6 +186,7 @@ public class accSelector : MonoBehaviour
     public void changeItem()
     {
         resetItem();
+        deleteLock();
         if(item1)
         {
             item_1.SetActive(true);
