@@ -431,6 +431,7 @@
 "Assets/player/playerData/saveAndLoad.cs"
 "Assets/player/playerData/saveSystem.cs"
 "Assets/player/playerScript/animation.cs"
+"Assets/player/playerScript/hideUi.cs"
 "Assets/player/playerScript/playerHealth.cs"
 "Assets/player/playerScript/playerMovement.cs"
 "Assets/player/playerScript/playerScore.cs"

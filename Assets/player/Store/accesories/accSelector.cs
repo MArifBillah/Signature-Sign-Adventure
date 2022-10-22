@@ -219,6 +219,13 @@ public class accSelector : MonoBehaviour
         item5 = false;
         item6 = false;
         item7 = false;
+
+    }
+
+    public void unequip()
+    {
+        resetItemStatus();  
+        changeItem();
     }
     public void changeItem()
     {
